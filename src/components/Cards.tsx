@@ -15,67 +15,13 @@ function Cards() {
     return (
         <>
             <div className="cards">
-                <div className="card card_Tethys">
-                    <div className="card_column">
-                        <div className="card_name">Tethys</div>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div className="card_column">
-                        <img src={tethys} alt="" />
-                    </div>
-                </div>
-                <div className="card card_Unidex">
-                    <div className="card_column">
-                        <div className="card_name">Unidex</div>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div className="card_column">
-                        <img src={unidex} alt="" />
-                    </div>
-                </div>
-                <div className="card card_Maia">
-                    <div className="card_column">
-                        <div className="card_name">Maia</div>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div className="card_column">
-                        <img src={maia} alt="" />
-                    </div>
-                </div>
-                <div className="card card_Netswap">
-                    <div className="card_column">
-                        <div className="card_name">Netswap</div>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div className="card_column">
-                        <img src={netswap} alt="" />
-                    </div>
-                </div>
-                <div className="card card_Hummus">
-                    <div className="card_column">
-                        <div className="card_name">Hummus</div>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div className="card_column">
-                        <img src={hummus} alt="" />
-                    </div>
-                </div>
-                <div className="card card_Midas">
-                    <div className="card_column">
-                        <div className="card_name">Midas</div>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div className="card_column">
-                        <img src={midas} alt="" />
-                    </div>
-                </div>
-                <div className="card card_LeagueTech">
-                    <div className="card_column">
-                        <div className="card_name">League Tech</div>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div><img src={league} alt="" /></div>
-                </div>
+                <CardItem name="Tethys" class="card_Tethys" arrow={arrow_right_white} icon={tethys} />
+                <CardItem name="Unidex" class="card_Unidex" arrow={arrow_right_white} icon={unidex} />
+                <CardItem name="Maia" class="card_Maia" arrow={arrow_right_white} icon={maia} />
+                <CardItem name="Netswap" class="card_Netswap" arrow={arrow_right_white} icon={netswap} />
+                <CardItem name="Hummus" class="card_Hummus" arrow={arrow_right_white} icon={hummus} />
+                <CardItem name="Midas" class="card_Midas" arrow={arrow_right_white} icon={midas} />
+                <CardItem name="League Tech" class="card_LeagueTech" arrow={arrow_right_white} icon={league} />
             </div>
         </>
     )
