@@ -1,9 +1,10 @@
 .header {
+    background: rgb(14, 14, 14);
     display: flex;
     justify-content: space-between;
     height: 90px;
     padding: 20px 45px;
-    margin-bottom: 55px;
+    /* margin-bottom: 55px; */
 }
 
 .header_column {
