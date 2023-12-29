@@ -1,10 +1,10 @@
-.first_screen {
+/* ---------------- Content ------------------------ */
+.empty_space {
+    height: 55px;
     background: rgb(14, 14, 14);
 }
-
-
-/* ---------------- Content ------------------------ */
 .content {
+    background: rgb(14, 14, 14);
     display: flex;
     justify-content: center;
     padding-bottom: 100px;
@@ -53,9 +53,10 @@
 .btn_wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
 }
-.unstyled_btn {
+
+.small_button {
     height: 50px;
     padding: 0 35px;
     border-radius: 25px;
@@ -64,8 +65,23 @@
     font-weight: 600;
     line-height: 19px;
     letter-spacing: 0.04em;
-    text-align: center;    
+    text-align: center;
 }
+
+.small_button:hover {
+    cursor: pointer;
+}
+
+.unstyled_btn {
+    background: #fff;
+    color: #000;
+}
+
+.black_btn {
+    color: #fff;
+    background: #000;
+}
+
 .big_btn {
     position: relative;
     display: flex;

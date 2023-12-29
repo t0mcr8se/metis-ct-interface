@@ -18,6 +18,11 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 }
+
+.card_wrapper {
+    position: relative;
+}
+
 .card {
     display: flex;
     justify-content: space-between;
@@ -26,11 +31,21 @@
     overflow: hidden;
     padding: 0 0 0 10%;
 }
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card_completed {
+    opacity: .5;
+    pointer-events: none;
+}
+
 .card_column {
 }
 .card_name {
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 35px;
     letter-spacing: 0.04em;
     text-align: left;
@@ -56,4 +71,39 @@
 }
 .card_LeagueTech {
     background: linear-gradient(94.15deg, #424242 0%, #405A6C 100%);
+}
+
+.card_used {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #000000;
+    padding: 5px 15px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    grid-column-gap: 5px;
+}
+
+.in_progress {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    background: #00D2FF;
+
+}
+
+.completed {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    background: #00FFA3;
+}
+
+.state_done {
+    width: max-content;
+    background: #00D2FF;
 }
