@@ -18,3 +18,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width: 650px) {
+    .main_img img:first-child {
+        border-radius: 30px;
+    }
+}

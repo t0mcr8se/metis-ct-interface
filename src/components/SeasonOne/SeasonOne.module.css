@@ -30,9 +30,6 @@
     .empty_space {
         height: 30px;
     }
-    .main_img img:first-child {
-        border-radius: 35px;
-    }
     .season_title {
         font-size: 50px;
     }
@@ -53,11 +50,5 @@
         font-weight: 700;
         line-height: 42px;
         letter-spacing: 0.04em;
-    }
-}
-
-@media screen and (max-width: 680px) {
-    .main_img img:first-child {
-        border-radius: 25px;
     }
 }
