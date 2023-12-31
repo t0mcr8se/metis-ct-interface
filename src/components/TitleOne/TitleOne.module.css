@@ -1,0 +1,31 @@
+.season_title {
+    font-size: 66px;
+    font-weight: 700;
+    line-height: 77px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.title_one_white {
+    color: #fff;
+}
+
+.title_one_gray {
+    color: rgb(74, 74, 74);
+}
+
+@media screen and (max-width: 800px) {
+    .season_title {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .season_title {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 42px;
+        letter-spacing: 0.04em;
+    }
+}

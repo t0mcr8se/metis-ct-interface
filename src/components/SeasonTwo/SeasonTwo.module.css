@@ -1,0 +1,43 @@
+.season_two {
+    background: rgb(14, 14, 14);
+    display: flex;
+    justify-content: center;
+    padding: 100px 0;
+}
+
+.season_two >div >*:first-child {
+    margin-bottom: 80px;
+}
+.season_two_subtitle {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 31px;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .season_two_subtitle {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .season_two {
+        padding: 70px 0;
+    }
+    .season_two >div >*:first-child {
+        margin-bottom: 60px;
+    }
+    .season_title {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 42px;
+        letter-spacing: 0.04em;
+    }
+    .season_two_subtitle {
+        font-size: 16px;
+        font-weight: 500;
+    }
+}

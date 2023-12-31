@@ -1,0 +1,27 @@
+.card_used {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #000000;
+    padding: 5px 15px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    grid-column-gap: 5px;
+}
+
+.in_progress {
+    background: #00D2FF;
+}
+
+.completed {
+    background: #00FFA3;
+}
+
+.state_done {
+    width: max-content;
+    background: #00D2FF;
+}

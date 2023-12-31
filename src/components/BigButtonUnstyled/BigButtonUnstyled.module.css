@@ -1,0 +1,48 @@
+.big_btn {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    height: 100px;
+    padding: 0 35px;
+}
+
+.big_btn_primary {
+    background: #003A92;
+    color: #fff;
+}
+
+.big_btn_unstyled {
+    background: #fff;
+    color: #000;
+}
+
+.big_btn_name {
+    color: #000;
+    font-family: Raleway;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.2px;
+    display: flex;
+    grid-column-gap: 15px;
+}
+
+.big_btn_absolute {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+@media screen and (max-width: 640px) {
+    .big_btn {
+        height: 90px;
+    }
+    
+    .big_btn_name {
+        font-size: 24px;
+        letter-spacing: 0.96px;
+    }
+}
