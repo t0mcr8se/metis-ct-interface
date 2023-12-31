@@ -50,3 +50,9 @@
         grid-row-gap: 35px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .footer_items {
+        grid-column-gap: 50px;
+    }
+}

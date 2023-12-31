@@ -2,8 +2,9 @@ import styles from './Header.module.css'
 import logo from '../../assets/images/bluemetis.svg'
 import logo_mob from '../../assets/images/logo_mob.svg'
 import arrow_header from '../../assets/images/arrow_down.svg'
+import wallet_one from '../../assets/header_icons/wallet_one.svg'
 import token_id from '../../assets/header_icons/wallet_three.svg'
-import light_theme from '../../assets/header_icons/hover.svg'
+// import light_theme from '../../assets/header_icons/hover.svg'
 import xp_icon from '../../assets/header_icons/xp_icon.svg'
 
 function Header() {
@@ -27,7 +28,7 @@ function Header() {
                     </div>
                     <div className={styles.wallet_items}>
                         <div className={`${styles.wallet_item} ${styles.wallet_block_one}`}>
-                            <img src={arrow_header} className={styles.header_arrow} alt="" />
+                            <img src={wallet_one} className={styles.header_arrow} alt="" />
                             <div className={styles.wallet_content}>36 Metis</div>
                         </div>
                         <div className={`${styles.wallet_item} ${styles.wallet_block_two}`}>

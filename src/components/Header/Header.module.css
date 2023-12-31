@@ -63,7 +63,7 @@
 .wallet_block_two {
     background: #FFFFFF;
     color: #000000;
-    margin-left: -58px;
+    margin-left: -45px;
 }
 
 .wallet_block_three {
@@ -72,8 +72,7 @@
 }
 
 .header_arrow {
-    width: 10px;
-    margin: 0 15px;
+    margin: 0 5px;
 }
 
 .wallet_icon {
