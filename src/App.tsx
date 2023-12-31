@@ -1,25 +1,27 @@
-import Header from './components/Header.tsx'
-import SeasonOne from './components/SeasonOne.tsx'
-import SeasonTwo from './components/SeasonTwo.tsx'
-import Ecosystem from './components/Ecosystem.tsx'
-import CardModal from './components/CardModal.tsx'
-import Footer from './components/Footer.tsx'
+import Header from './components/Header/Header.tsx'
+import SeasonOne from './components/SeasonOne/SeasonOne.tsx'
+import SeasonTwo from './components/SeasonTwo/SeasonTwo.tsx'
+import Ecosystem from './components/Ecosystem/Ecosystem.tsx'
+import Footer from './components/Footer/Footer.tsx'
 import './App.css'
-import './assets/styles/first_screen.css'
 
 function App() {
 
     return (
         <>
-            <Header />
-            <div className='empty_space'></div>
-            <SeasonOne />
+            <div className="season_one">
+                <Header />
+                <SeasonOne />
+            </div>
             <Ecosystem />
             <SeasonTwo />
             <Footer />
-            <CardModal />
         </>
     )
 }
+
+<style>
+    
+</style>
 
 export default App

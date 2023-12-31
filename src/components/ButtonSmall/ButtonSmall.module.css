@@ -1,0 +1,31 @@
+.btn_wrapper {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.small_button {
+    font-family: Raleway;
+    height: 50px;
+    padding: 0 35px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.18px;
+}
+
+.small_button:hover {
+    cursor: pointer;
+}
+
+.unstyled_btn {
+    background: #fff;
+    color: #000;
+}
+
+.black_btn {
+    color: #fff;
+    background: #000;
+}

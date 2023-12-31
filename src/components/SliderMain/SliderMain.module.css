@@ -1,0 +1,20 @@
+.main_carousel {}
+
+.main_img {
+    position: relative;
+}
+
+.main_img img:first-child {
+    border-radius: 45px;
+}
+
+.main_img img {
+    width: 100%;
+}
+
+.main_gradient {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
