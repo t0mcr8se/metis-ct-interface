@@ -1,3 +1,5 @@
+// import { useState } from 'react'
+
 import TitleOne from '../TitleOne/TitleOne.tsx'
 import SliderMain from '../SliderMain/SliderMain.tsx'
 import BigButtonPrimary from '../BigButtonPrimary/BigButtonPrimary.tsx'
@@ -6,6 +8,9 @@ import styles from './SeasonOne.module.css'
 
 
 function SeasonOne() {
+    // const [ claimTokenDisabled, disableClaimButton ] = useState(false)
+
+
     return (
         <>
             <div className={styles.content}>

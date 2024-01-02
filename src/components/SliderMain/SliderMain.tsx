@@ -2,7 +2,7 @@
 import styles from './SliderMain.module.css'
 import slider_one from '../../assets/images/slider_one.jpg'
 import gradient from '../../assets/images/gradient.png'
-import mob_main from '../../assets/images/mob_main.jpg'
+// import mob_main from '../../assets/images/mob_main.jpg'
 
 
 function SliderMain() {
