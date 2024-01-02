@@ -1,23 +1,62 @@
-
+import { useState } from 'react'
 import arrow_right_white from '../../assets/images/arrow_right_white.svg'
-import token_gradient from '../../assets/images/tokens_gradient.svg'
-import token_icon from '../../assets/images/tokens_2.svg'
+import tokens_innactive_gradient from '../../assets/button_images/tokens_innactive_gradient.svg'
+import tokens_innactive from '../../assets/button_images/tokens_innactive.svg'
+import token_gradient from '../../assets/button_images/tokens_gradient.svg'
+import token_icon from '../../assets/button_images/tokens_2.svg'
 import styles from './BigButtonPrimary.module.css'
 
 function BigButtonPrimary() {
 
+    const [disabled, setDisabled] = useState(false);
+
+    const claimToken = () => {
+        setDisabled(true)
+        console.log('claimToken')
+    }
+    
+
     return (
         <>
-            <div className={`${styles.big_btn} ${styles.big_btn_primary}`}>
+            {/* {
+                disabled ? 
+                `${<div className={`${styles.big_btn} ${styles.big_btn_primary}`}>
+                    <div className={styles.big_btn_name}>
+                        <span>Claim your <br className='sm:hidden' />tokens</span>
+                        <img src={arrow_right_white} alt="" />
+                    </div>
+                    <div>
+                        <img src={tokens_innactive_gradient} alt="" className={`${styles.big_btn_gradient} ${styles.big_btn_absolute}`} />
+                        <img src={tokens_innactive} alt="" className={`${styles.big_btn_icon} ${styles.big_btn_absolute}`} />
+                    </div>
+                </div>}` :
+                `${<div className={`${styles.big_btn} ${styles.big_btn_primary}`}>
+                    <div className={styles.big_btn_name}>
+                        <span>Claim your <br className='sm:hidden' />tokens</span>
+                        <img src={arrow_right_white} alt="" />
+                    </div>
+                    <div>
+                        <img src={token_gradient} alt="" className={`${styles.big_btn_gradient} ${styles.big_btn_absolute}`} />
+                        <img src={token_icon} alt="" className={`${styles.big_btn_icon} ${styles.big_btn_absolute}`} />
+                    </div>
+                </div>}`
+            } */}
+            <button disabled={disabled} className={`${styles.big_btn} ${disabled ? styles.button_disabled : styles.big_btn_primary}`} onClick={claimToken}>
                 <div className={styles.big_btn_name}>
                     <span>Claim your <br className='sm:hidden'/>tokens</span>
                     <img src={arrow_right_white} alt="" />
                 </div>
                 <div>
-                    <img src={token_gradient} alt="" className={`${styles.big_btn_gradient} ${styles.big_btn_absolute}`} />
-                    <img src={token_icon} alt="" className={`${styles.big_btn_icon} ${styles.big_btn_absolute}`} />
+                    <img 
+                        src={`${disabled ? tokens_innactive_gradient : token_gradient}`} 
+                        alt="" 
+                        className={`${styles.big_btn_gradient} ${styles.big_btn_absolute}`} />
+                    <img 
+                        src={`${disabled ? tokens_innactive : token_icon}`}
+                        alt="" 
+                        className={`${styles.big_btn_icon} ${styles.big_btn_absolute}`} />
                 </div>
-            </div>
+            </button>
 
         </>
     )

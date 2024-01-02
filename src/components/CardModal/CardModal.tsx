@@ -49,6 +49,15 @@ const CardModal: FC<ICardModal> = ({ openedModal, closeModal, setOpenedModal, to
                             src="https://www.youtube.com/embed/jYLXorNpLlE">
                         </iframe>
                     </div>
+                    <div className={styles.modal_history}>
+                        <div className={styles.modal_history_items}>
+                            <div className={`${styles.modal_history_item} ${styles.modal_history_item_completed}`}>Swap at least 1 Metis token</div>
+                            <div className={`${styles.modal_history_item} ${styles.modal_history_item_completed}`}>Add Liquidity</div>
+                            <div className={`${styles.modal_history_item} ${styles.modal_history_item_completed}`}>Add Liquidity</div>
+                            <div className={styles.modal_history_item}>Add Liquidity</div>
+                            <div className={styles.modal_history_item}>Long at least 0.5 Metis</div>
+                        </div>
+                    </div>
                     <Button type="black_btn" text="Start Now" />
                 </div>
             </div>

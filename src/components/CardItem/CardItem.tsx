@@ -16,7 +16,6 @@ interface ICardItem {
     cardModalIcon: string
 }
 
-// const CardModal: FC<ICardModal> = ({openedModal, closeModal, setOpenedModal}) => {
 const CardItem: FC<ICardItem> = ({cardName, cardClass, cardIcon, cardArrow, cardState, cardModalIcon}) => {
     const [openedModal, setOpenedModal] = useState(false)
 
@@ -29,6 +28,7 @@ const CardItem: FC<ICardItem> = ({cardName, cardClass, cardIcon, cardArrow, card
     }
 
     const state = getStateElement(cardState, inProgressIcon, completedIcon)
+
     return (
         <>
             <div className={styles.card_wrapper} onClick={openModal}>

@@ -1,7 +1,7 @@
 import styles from './Header.module.css'
 import logo from '../../assets/images/bluemetis.svg'
 import logo_mob from '../../assets/images/logo_mob.svg'
-import arrow_header from '../../assets/images/arrow_down.svg'
+// import arrow_header from '../../assets/images/arrow_down.svg'
 import wallet_one from '../../assets/header_icons/wallet_one.svg'
 import token_id from '../../assets/header_icons/wallet_three.svg'
 // import light_theme from '../../assets/header_icons/hover.svg'
