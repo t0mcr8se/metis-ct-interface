@@ -1,4 +1,7 @@
+import HeaderTokeInfo from '../HeaderTokenInfo/HeaderTokenInfo.tsx'
 import styles from './Header.module.css'
+import navItems from '../../store/headerNavItems.json'
+
 import logo from '../../assets/images/bluemetis.svg'
 import logo_mob from '../../assets/images/logo_mob.svg'
 // import arrow_header from '../../assets/images/arrow_down.svg'
@@ -7,7 +10,7 @@ import token_id from '../../assets/header_icons/wallet_three.svg'
 // import light_theme from '../../assets/header_icons/hover.svg'
 import xp_icon from '../../assets/header_icons/xp_icon.svg'
 
-function Header() {
+const Header = () => {
     return (
         <>
             <div className={styles.header}>
@@ -19,26 +22,14 @@ function Header() {
                 </div>
                 <div className={styles.header_column}>
                     <div className={styles.nav_items}>
-                        <div className={styles.nav_item}><a href="#">Developer</a></div>
-                        <div className={styles.nav_item}><a href="#">Ecosystem</a></div>
-                        <div className={styles.nav_item}><a href="#">Governance</a></div>
-                        <div className={styles.nav_item}><a href="#">Company</a></div>
-                        <div className={styles.nav_item}><a href="#">Bridge</a></div>
-                        <div className={styles.nav_item}><a href="#">More</a></div>
+                        {navItems.map((item) => {
+                            return <div key={item.id} className={styles.nav_item}><a href={item.url}>{item.name}</a></div>
+                        })}
                     </div>
                     <div className={styles.wallet_items}>
-                        <div className={`${styles.wallet_item} ${styles.wallet_block_one}`}>
-                            <img src={wallet_one} className={styles.header_arrow} alt="" />
-                            <div className={styles.wallet_content}>36 Metis</div>
-                        </div>
-                        <div className={`${styles.wallet_item} ${styles.wallet_block_two}`}>
-                            <img src={xp_icon} className={styles.wallet_icon} alt="" />
-                            <div className={styles.wallet_content}>142</div>
-                        </div>
-                        <div className={`${styles.wallet_item} ${styles.wallet_block_three}`}>
-                            <img src={token_id} className={styles.wallet_icon} alt="" />
-                            <div className={styles.wallet_content}>0x8e...c06c</div>
-                        </div>
+                        <HeaderTokeInfo icon={wallet_one} type="wallet_block_one" text="36 Metis" />
+                        <HeaderTokeInfo icon={xp_icon} type="wallet_block_two" text="142" />
+                        <HeaderTokeInfo icon={token_id} type="user_wallet_address" text="0x7C01FB632424Ba62D02367EeD1CD8688D49A7a27" />
                     </div>
                     {/* <div className="page_theme">
                         <img src={light_theme} alt="" />

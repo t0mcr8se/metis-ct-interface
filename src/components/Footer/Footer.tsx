@@ -22,7 +22,7 @@ function Footer() {
                             </div>
                             <div className={styles.footer_items}>
                                 {footerNav.map((item) => {
-                                    return <div className={styles.footer_item}><a href={item.url}>{item.name}</a></div>
+                                    return <div key={item.id} className={styles.footer_item}><a href={item.url}>{item.name}</a></div>
                                 })}
                             </div>
                         </div>
