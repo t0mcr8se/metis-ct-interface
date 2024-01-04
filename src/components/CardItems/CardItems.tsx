@@ -23,7 +23,8 @@ function Cards() {
                         cardArrow={arrow_right_white}
                         cardIcon={item.icon}
                         cardState={states[item.state]}
-                        cardModalIcon={item.cardsModalIcon} />
+                        cardModalIcon={item.cardsModalIcon}
+                        cardHistory={item.history} />
                 )
             })}
         </div>

@@ -10,10 +10,16 @@ interface ICardModal {
     closeModal: () => void,
     setOpenedModal: Dispatch<SetStateAction<boolean>>,
     tokenIcon: string,
-    cardStateModal: ReactNode
+    cardStateModal: ReactNode,
+    cardHistory: Array<ICardHistory>
 }
 
-const CardModal: FC<ICardModal> = ({ openedModal, closeModal, setOpenedModal, tokenIcon, cardStateModal }) => {
+interface ICardHistory {
+    stageName: string,
+    state: string
+}
+
+const CardModal: FC<ICardModal> = ({ openedModal, closeModal, setOpenedModal, tokenIcon, cardStateModal, cardHistory }) => {
     const refModal = useRef(null)
     useClickOutside(refModal, setOpenedModal)
 
@@ -51,11 +57,12 @@ const CardModal: FC<ICardModal> = ({ openedModal, closeModal, setOpenedModal, to
                     </div>
                     <div className={styles.modal_history}>
                         <div className={styles.modal_history_items}>
-                            <div className={`${styles.modal_history_item} ${styles.modal_history_item_completed}`}>Swap at least 1 Metis token</div>
-                            <div className={`${styles.modal_history_item} ${styles.modal_history_item_completed}`}>Add Liquidity</div>
-                            <div className={`${styles.modal_history_item} ${styles.modal_history_item_completed}`}>Add Liquidity</div>
-                            <div className={styles.modal_history_item}>Add Liquidity</div>
-                            <div className={styles.modal_history_item}>Long at least 0.5 Metis</div>
+                            {cardHistory.map((item, index) => {
+                                return <div key={index} className={`
+                                    ${styles.modal_history_item} 
+                                    ${item.state == 'completed' ? styles.modal_history_item_completed : ''}`}
+                                    >{item.stageName}</div>
+                            })}
                         </div>
                     </div>
                     <Button type="black_btn" text="Start Now" />
