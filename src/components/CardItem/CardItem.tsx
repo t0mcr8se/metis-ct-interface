@@ -13,10 +13,11 @@ interface ICardItem {
     cardIcon: string,
     cardArrow: string,
     cardState: string,
-    cardModalIcon: string
+    cardModalIcon: string,
+    cardHistory: Array<object>
 }
 
-const CardItem: FC<ICardItem> = ({cardName, cardClass, cardIcon, cardArrow, cardState, cardModalIcon}) => {
+const CardItem: FC<ICardItem> = ({cardName, cardClass, cardIcon, cardArrow, cardState, cardModalIcon, cardHistory }) => {
     const [openedModal, setOpenedModal] = useState(false)
 
     const openModal = () => {
@@ -47,7 +48,8 @@ const CardItem: FC<ICardItem> = ({cardName, cardClass, cardIcon, cardArrow, card
                 closeModal={closeModal} 
                 setOpenedModal={setOpenedModal}
                 tokenIcon={cardModalIcon}
-                cardStateModal={state} />
+                cardStateModal={state} 
+                cardHistory={cardHistory} />
         </>
     )
 }

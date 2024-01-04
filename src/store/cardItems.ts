@@ -4,7 +4,8 @@ type TCards = {
     "class": string,
     "icon": string,
     "state": string,
-    "cardsModalIcon": string
+    "cardsModalIcon": string,
+    "history": Array<object>
 }
 
 import tethys from '../assets/cards/TethysLogo.svg'
@@ -29,7 +30,29 @@ const cards: TCards[] = [
         "class": "card_Tethys",
         "icon": tethys,
         "state": "started",
-        "cardsModalIcon": modalTethys
+        "cardsModalIcon": modalTethys,
+        "history": [
+            {
+                "stageName": "Swap at least 1 Metis token",
+                "state": "inProgress"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "inProgress"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "inProgress"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "inProgress"
+            },
+            {
+                "stageName": "Long at least 0.5 Metis",
+                "state": "inProgress"
+            }
+        ]
     },
     {
         "id": 2,
@@ -37,7 +60,29 @@ const cards: TCards[] = [
         "class": "card_Maia",
         "icon": maia,
         "state": "not_started",
-        "cardsModalIcon": modalMaiaDao
+        "cardsModalIcon": modalMaiaDao,
+        "history": [
+            {
+                "stageName": "Swap at least 1 Metis token",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "inProgress"
+            },
+            {
+                "stageName": "Long at least 0.5 Metis",
+                "state": "inProgress"
+            }
+        ]
     },
     {
         "id": 3,
@@ -45,7 +90,29 @@ const cards: TCards[] = [
         "class": "card_Netswap",
         "icon": netswap,
         "state": "not_started",
-        "cardsModalIcon": modalNetswap
+        "cardsModalIcon": modalNetswap,
+        "history": [
+            {
+                "stageName": "Swap at least 1 Metis token",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "inProgress"
+            },
+            {
+                "stageName": "Long at least 0.5 Metis",
+                "state": "inProgress"
+            }
+        ]
     },
     {
         "id": 4,
@@ -53,7 +120,17 @@ const cards: TCards[] = [
         "class": "card_Hummus",
         "icon": hummus,
         "state": "completed",
-        "cardsModalIcon": modalHummus
+        "cardsModalIcon": modalHummus,
+        "history": [
+            {
+                "stageName": "Swap at least 1 Metis token",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            }
+        ]
     },
     {
         "id": 5,
@@ -61,7 +138,21 @@ const cards: TCards[] = [
         "class": "card_Midas",
         "icon": midas,
         "state": "started",
-        "cardsModalIcon": modalMidas
+        "cardsModalIcon": modalMidas,
+        "history": [
+            {
+                "stageName": "Swap at least 1 Metis token",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            }
+        ]
     },
     {
         "id": 6,
@@ -70,16 +161,28 @@ const cards: TCards[] = [
         "icon": league,
         "state": "not_started",
         "cardsModalIcon": modalLeagueTech,
-        // "history": [
-        //     {
-        //         "stageName": "Swap at least 1 Metis token",
-        //         "state": "completed"
-        //     },
-        //     {
-        //         "stageName": "Add Liquidity",
-        //         "state": "inProgress"
-        //     }
-        // ]
+        "history": [
+            {
+                "stageName": "Swap at least 1 Metis token",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "completed"
+            },
+            {
+                "stageName": "Add Liquidity",
+                "state": "inProgress"
+            },
+            {
+                "stageName": "Long at least 0.5 Metis",
+                "state": "inProgress"
+            }
+        ]
     }
 ]
 
