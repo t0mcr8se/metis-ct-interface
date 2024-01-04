@@ -1,0 +1,32 @@
+[
+    {
+        "id": 0,
+        "name": "Developer",
+        "url": "#"
+    },
+    {
+        "id": 1,
+        "name": "Ecosystem",
+        "url": "#"
+    },
+    {
+        "id": 2,
+        "name": "Governance",
+        "url": "#"
+    },
+    {
+        "id": 3,
+        "name": "Company",
+        "url": "#"
+    },
+    {
+        "id": 4,
+        "name": "Bridge",
+        "url": "#"
+    },
+    {
+        "id": 5,
+        "name": "More",
+        "url": "#"
+    }
+]

@@ -37,6 +37,7 @@
     display: flex;
     align-items: center;
     grid-gap: 10px;
+    text-align: left;
 }
 .big_btn_absolute {
     position: absolute;
@@ -56,6 +57,7 @@
 @media screen and (max-width: 640px) {
     .big_btn {
         height: 90px;
+        padding: 0 20px;
     }
     
     .big_btn_gradient {

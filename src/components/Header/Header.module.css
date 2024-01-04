@@ -38,7 +38,7 @@
     font-family: 'Poppins', sans-serif;
     display: flex;
 }
-
+/* 
 .wallet_item {
     font-family: Poppins;
     width: 190px;
@@ -79,7 +79,7 @@
     width: 38px;
     height: 38px;
     margin-right: 5px;
-}
+} */
 
 .page_theme {}
 
@@ -95,7 +95,7 @@
 
 @media screen and (max-width: 800px) {
     .header {
-        height: 60px;
+        height: 66px;
         padding: 0 20px;
         /* margin-bottom: 55px; */
     }

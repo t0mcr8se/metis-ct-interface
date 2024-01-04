@@ -17,15 +17,13 @@ function Cards() {
         <div className={styles.cards}>
             {cards.map((item) => {
                 return (
-                    <>
-                        <CardItem key={item.id}
-                            cardName={item.name}
-                            cardClass={item.class}
-                            cardArrow={arrow_right_white}
-                            cardIcon={item.icon}
-                            cardState={states[item.state]}
-                            cardModalIcon={item.cardsModalIcon} />
-                    </>
+                    <CardItem key={item.id}
+                        cardName={item.name}
+                        cardClass={item.class}
+                        cardArrow={arrow_right_white}
+                        cardIcon={item.icon}
+                        cardState={states[item.state]}
+                        cardModalIcon={item.cardsModalIcon} />
                 )
             })}
         </div>

@@ -12,35 +12,11 @@ function BigButtonPrimary() {
 
     const claimToken = () => {
         setDisabled(true)
-        console.log('claimToken')
     }
     
 
     return (
         <>
-            {/* {
-                disabled ? 
-                `${<div className={`${styles.big_btn} ${styles.big_btn_primary}`}>
-                    <div className={styles.big_btn_name}>
-                        <span>Claim your <br className='sm:hidden' />tokens</span>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div>
-                        <img src={tokens_innactive_gradient} alt="" className={`${styles.big_btn_gradient} ${styles.big_btn_absolute}`} />
-                        <img src={tokens_innactive} alt="" className={`${styles.big_btn_icon} ${styles.big_btn_absolute}`} />
-                    </div>
-                </div>}` :
-                `${<div className={`${styles.big_btn} ${styles.big_btn_primary}`}>
-                    <div className={styles.big_btn_name}>
-                        <span>Claim your <br className='sm:hidden' />tokens</span>
-                        <img src={arrow_right_white} alt="" />
-                    </div>
-                    <div>
-                        <img src={token_gradient} alt="" className={`${styles.big_btn_gradient} ${styles.big_btn_absolute}`} />
-                        <img src={token_icon} alt="" className={`${styles.big_btn_icon} ${styles.big_btn_absolute}`} />
-                    </div>
-                </div>}`
-            } */}
             <button disabled={disabled} className={`${styles.big_btn} ${disabled ? styles.button_disabled : styles.big_btn_primary}`} onClick={claimToken}>
                 <div className={styles.big_btn_name}>
                     <span>Claim your <br className='sm:hidden'/>tokens</span>
