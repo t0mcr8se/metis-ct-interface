@@ -27,7 +27,7 @@ const Header = () => {
                         })}
                     </div>
                     <div className={styles.wallet_items}>
-                        <HeaderTokeInfo icon={wallet_one} type="wallet_block_one" text="36 Metis" />
+                        {/* <HeaderTokeInfo icon={wallet_one} type="wallet_block_one" text="36 Metis" /> */}
                         <HeaderTokeInfo icon={xp_icon} type="wallet_block_two" text="142" />
                         {/* <HeaderTokeInfo icon={token_id} type="user_wallet_address" text="0x7C01FB632424Ba62D02367EeD1CD8688D49A7a27" /> */}
                         <w3m-button />

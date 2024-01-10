@@ -1,86 +1,85 @@
-type TCards = {
-    "id": number,
-    "name": string,
-    "class": string,
-    "icon": string,
-    "state": string,
-    "cardsModalIcon": string,
-    "history": Array<object>
-}
-
 import tethys from '../assets/cards/TethysLogo.svg'
-// import unidex from '../assets/cards/Unidex.svg'
-import maia from '../assets/cards/Maia.svg'
+import metis from '../assets/cards/Metis.svg'
 import netswap from '../assets/cards/Netswap.svg'
 import hummus from '../assets/cards/Hummus.svg'
 import midas from '../assets/cards/Midas.svg'
 import league from '../assets/cards/LeagueTech.svg'
 
 import modalTethys from '../assets/modal_icons/tethys.svg'
+import modalMetis from '../assets/modal_icons/Metis.svg'
 import modalNetswap from '../assets/modal_icons/Netswap.svg'
 import modalMidas from '../assets/modal_icons/midas.svg'
-import modalMaiaDao from '../assets/modal_icons/MaiaDao.svg'
 import modalLeagueTech from '../assets/modal_icons/LeagueTech.svg'
 import modalHummus from '../assets/modal_icons/hummus.svg'
+import { TG_BOT } from '../constants'
+
+export enum ItemStates {
+    STARTED,
+    NOT_STARTED,
+    COMPLETED,
+}
+
+
+interface ICardHistory {
+    stageName: string,
+    state: ItemStates
+}
+
+export type TCards = {
+    "id": number,
+    "name": string,
+    "class": string,
+    "icon": string,
+    "state": ItemStates,
+    "cardsModalIcon": string,
+    "history": Array<ICardHistory>,
+    "descriptionText": string,
+    "url": string
+    videoUrl?: string
+    buttonText?: string
+}
 
 const cards: TCards[] = [
     {
-        "id": 0,
-        "name": "Tethys",
-        "class": "card_Tethys",
-        "icon": tethys,
-        "state": "started",
-        "cardsModalIcon": modalTethys,
+        "id": 1,
+        "name": "Claim Test Tokens",
+        "class": "card_Metis",
+        "icon": metis,
+        "state": ItemStates.NOT_STARTED,
+        "cardsModalIcon": modalMetis,
+        "descriptionText": "Connect your wallet and claim your test tokens, clicking on \"Start Now\" will open a Telegram conversation with the bot that distributes the tokens. It is sufficient to click on \"start\" button and then bot will send you the tokens ",
+        "url": TG_BOT,
+        // "videoUrl": "",
+        buttonText: "Claim",
         "history": [
             {
-                "stageName": "Swap at least 1 Metis token",
-                "state": "inProgress"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "inProgress"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "inProgress"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "inProgress"
-            },
-            {
-                "stageName": "Long at least 0.5 Metis",
-                "state": "inProgress"
+                "stageName": "Claim tokens from telegram bot",
+                "state": ItemStates.NOT_STARTED
             }
         ]
     },
     {
         "id": 2,
-        "name": "Maia",
-        "class": "card_Maia",
-        "icon": maia,
-        "state": "not_started",
-        "cardsModalIcon": modalMaiaDao,
+        "name": "Tethys",
+        "class": "card_Tethys",
+        "icon": tethys,
+        "state": ItemStates.STARTED,
+        "cardsModalIcon": modalTethys,
+        "descriptionText": "Connect to Tethys and complete the milestones below",
+        "url": "https://testnet.tethys.finance/trade",
+        "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
         "history": [
             {
-                "stageName": "Swap at least 1 Metis token",
-                "state": "completed"
+                "stageName": "Swap tokens (300 pts)",
+                "state": ItemStates.COMPLETED
             },
             {
-                "stageName": "Add Liquidity",
-                "state": "completed"
+                "stageName": "Open a long/short position with leverage (400 pts)",
+                "state": ItemStates.NOT_STARTED
             },
             {
-                "stageName": "Add Liquidity",
-                "state": "completed"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "inProgress"
-            },
-            {
-                "stageName": "Long at least 0.5 Metis",
-                "state": "inProgress"
+                "stageName": "Add TLP liquidity (500 pts)",
+                "state": ItemStates.NOT_STARTED
             }
         ]
     },
@@ -89,29 +88,20 @@ const cards: TCards[] = [
         "name": "Netswap",
         "class": "card_Netswap",
         "icon": netswap,
-        "state": "not_started",
+        "state": ItemStates.NOT_STARTED,
         "cardsModalIcon": modalNetswap,
+        "descriptionText": "Connect to Netswap and complete the milestones below",
+        "url": "https://netswap.io",
+        // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
         "history": [
             {
-                "stageName": "Swap at least 1 Metis token",
-                "state": "completed"
+                "stageName": "Swap tokens (300 pts)",
+                "state": ItemStates.NOT_STARTED
             },
             {
-                "stageName": "Add Liquidity",
-                "state": "completed"
+                "stageName": "Provide LP (300 pts)",
+                "state": ItemStates.NOT_STARTED
             },
-            {
-                "stageName": "Add Liquidity",
-                "state": "completed"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "inProgress"
-            },
-            {
-                "stageName": "Long at least 0.5 Metis",
-                "state": "inProgress"
-            }
         ]
     },
     {
@@ -119,16 +109,19 @@ const cards: TCards[] = [
         "name": "Hummus",
         "class": "card_Hummus",
         "icon": hummus,
-        "state": "completed",
+        "state": ItemStates.NOT_STARTED,
         "cardsModalIcon": modalHummus,
+        "descriptionText": "Connect to Hummus and complete the milestones below",
+        "url": "https://www.hummus.exchange/",
+        // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
         "history": [
             {
-                "stageName": "Swap at least 1 Metis token",
-                "state": "completed"
+                "stageName": "Swap tokens (300 pts)",
+                "state": ItemStates.NOT_STARTED
             },
             {
-                "stageName": "Add Liquidity",
-                "state": "completed"
+                "stageName": "Provide LP (300 pts)",
+                "state": ItemStates.NOT_STARTED
             }
         ]
     },
@@ -137,20 +130,15 @@ const cards: TCards[] = [
         "name": "Midas",
         "class": "card_Midas",
         "icon": midas,
-        "state": "started",
+        "state": ItemStates.NOT_STARTED,
         "cardsModalIcon": modalMidas,
+        "descriptionText": "Connect to Midas and complete the milestones below",
+        "url": "https://www.midas.game/",
+        // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
         "history": [
             {
-                "stageName": "Swap at least 1 Metis token",
-                "state": "completed"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "completed"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "completed"
+                "stageName": "Enter a lottery (1000 pts)",
+                "state": ItemStates.NOT_STARTED
             }
         ]
     },
@@ -159,28 +147,19 @@ const cards: TCards[] = [
         "name": "League Tech",
         "class": "card_LeagueTech",
         "icon": league,
-        "state": "not_started",
+        "state": ItemStates.NOT_STARTED,
         "cardsModalIcon": modalLeagueTech,
+        "descriptionText": "Connect to LeagueTech and complete the milestones below",
+        "url": "https://dev.league.tech/",
+        // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
         "history": [
             {
-                "stageName": "Swap at least 1 Metis token",
-                "state": "completed"
+                "stageName": "Trade (buy/sell) shares (1000 pts)",
+                "state": ItemStates.NOT_STARTED
             },
             {
-                "stageName": "Add Liquidity",
-                "state": "completed"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "completed"
-            },
-            {
-                "stageName": "Add Liquidity",
-                "state": "inProgress"
-            },
-            {
-                "stageName": "Long at least 0.5 Metis",
-                "state": "inProgress"
+                "stageName": "Buy a sub (1000 pts)",
+                "state": ItemStates.NOT_STARTED
             }
         ]
     }

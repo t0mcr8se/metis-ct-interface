@@ -4,23 +4,27 @@ import { useClickOutside } from '../../hooks/useClickOutside.ts'
 import close from '../../assets/images/close_icon.svg'
 import Button from '../ButtonSmall/ButtonSmall.tsx'
 import styles from './CardModal.module.css'
+import { ItemStates, TCards } from '../../store/cardItems.ts'
+import { useAccount } from 'wagmi'
 
 interface ICardModal {
     openedModal: boolean,
     closeModal: () => void,
     setOpenedModal: Dispatch<SetStateAction<boolean>>,
-    tokenIcon: string,
     cardStateModal: ReactNode,
-    cardHistory: Array<ICardHistory>
+    item: TCards
 }
 
-interface ICardHistory {
-    stageName: string,
-    state: string
-}
 
-const CardModal: FC<ICardModal> = ({ openedModal, closeModal, setOpenedModal, tokenIcon, cardStateModal, cardHistory }) => {
+const CardModal: FC<ICardModal> = ({ 
+    openedModal, 
+    closeModal, 
+    setOpenedModal, 
+    cardStateModal, 
+    item
+}) => {
     const refModal = useRef(null)
+    const {address} = useAccount()
     useClickOutside(refModal, setOpenedModal)
 
     useEffect(() => {
@@ -43,29 +47,28 @@ const CardModal: FC<ICardModal> = ({ openedModal, closeModal, setOpenedModal, to
                     </div>
                     <div className={styles.modal_content}>
                         <div className={styles.modal_title}>
-                            <img src={tokenIcon} alt="" />
+                            <img src={item.cardsModalIcon} alt="" />
                         </div>
                         <div className={styles.modal_text}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            {item.descriptionText}
                         </div>
                     </div>
-                    <div className={styles.modal_video}>
-                        {/* <img src={video} alt="" /> */}
+                    {item.videoUrl && <div className={styles.modal_video}>
                         <iframe
-                            src="https://www.youtube.com/embed/jYLXorNpLlE">
+                            src={item.videoUrl}>
                         </iframe>
-                    </div>
+                    </div>}
                     <div className={styles.modal_history}>
                         <div className={styles.modal_history_items}>
-                            {cardHistory.map((item, index) => {
+                            {item.history.map((task, index) => {
                                 return <div key={index} className={`
                                     ${styles.modal_history_item} 
-                                    ${item.state == 'completed' ? styles.modal_history_item_completed : ''}`}
-                                    >{item.stageName}</div>
+                                    ${task.state == ItemStates.COMPLETED ? styles.modal_history_item_completed : ''}`}
+                                    >{task.stageName}</div>
                             })}
                         </div>
                     </div>
-                    <Button type="black_btn" text="Start Now" />
+                    <Button type="black_btn" text={item.buttonText ?? "Start Now"} onClick={() => {window.open( item.id == 1 ? (item.url + address) : (item.url), '_blank')}} />
                 </div>
             </div>
         </>

@@ -33,6 +33,10 @@
     margin-bottom: 5px;
 }
 
+.card_Metis {
+    background: linear-gradient(94.15deg, #024680 0%, #0088ED 100%);
+}
+
 .card_Tethys {
     background: linear-gradient(94.15deg, #3838F1 0%, #0000FF 100%);
 }

@@ -5,14 +5,15 @@ import styles from './ButtonSmall.module.css'
 
 interface IButtonSmall {
     type: string,
-    text: string
+    text: string,
+    onClick?: () => void | undefined,
 }
 
-const ButtonSmall: FC<IButtonSmall> = ({type, text}) => {
+const ButtonSmall: FC<IButtonSmall> = ({type, text, onClick}) => {
     return (
         <>
             <div className={styles.btn_wrapper}>
-                <button className={`${styles.small_button} ${styles[type]}`}>{text}</button>
+                <button className={`${styles.small_button} ${styles[type]}`} onClick={onClick}>{text}</button>
             </div>
         </>
     )
