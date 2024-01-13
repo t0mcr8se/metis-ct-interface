@@ -23,6 +23,7 @@ export enum ItemStates {
 interface ICardHistory {
     stageName: string,
     state: ItemStates
+    id: string
 }
 
 export type TCards = {
@@ -54,6 +55,7 @@ const cards: TCards[] = [
         "history": [
             {
                 "stageName": "Claim tokens from telegram bot",
+                "id": "joinId",
                 "state": ItemStates.NOT_STARTED
             }
         ]
@@ -63,7 +65,7 @@ const cards: TCards[] = [
         "name": "Tethys",
         "class": "card_Tethys",
         "icon": tethys,
-        "state": ItemStates.STARTED,
+        "state": ItemStates.NOT_STARTED,
         "cardsModalIcon": modalTethys,
         "descriptionText": "Connect to Tethys and complete the milestones below",
         "url": "https://testnet.tethys.finance/trade",
@@ -71,14 +73,17 @@ const cards: TCards[] = [
         "history": [
             {
                 "stageName": "Swap tokens (300 pts)",
-                "state": ItemStates.COMPLETED
+                "id": "tethysSwap",
+                "state": ItemStates.NOT_STARTED
             },
             {
                 "stageName": "Open a long/short position with leverage (400 pts)",
+                "id": "tethysPerp",
                 "state": ItemStates.NOT_STARTED
             },
             {
                 "stageName": "Add TLP liquidity (500 pts)",
+                "id": "tethysTLP",
                 "state": ItemStates.NOT_STARTED
             }
         ]
@@ -96,10 +101,12 @@ const cards: TCards[] = [
         "history": [
             {
                 "stageName": "Swap tokens (300 pts)",
+                "id": "netswapSwap",
                 "state": ItemStates.NOT_STARTED
             },
             {
                 "stageName": "Provide LP (300 pts)",
+                "id": "netswapLp",
                 "state": ItemStates.NOT_STARTED
             },
         ]
@@ -117,10 +124,12 @@ const cards: TCards[] = [
         "history": [
             {
                 "stageName": "Swap tokens (300 pts)",
+                "id": "hummusSwap",
                 "state": ItemStates.NOT_STARTED
             },
             {
                 "stageName": "Provide LP (300 pts)",
+                "id": "hummusLp",
                 "state": ItemStates.NOT_STARTED
             }
         ]
@@ -138,6 +147,7 @@ const cards: TCards[] = [
         "history": [
             {
                 "stageName": "Enter a lottery (1000 pts)",
+                "id": "midasLottery",
                 "state": ItemStates.NOT_STARTED
             }
         ]
@@ -155,10 +165,12 @@ const cards: TCards[] = [
         "history": [
             {
                 "stageName": "Trade (buy/sell) shares (1000 pts)",
+                "id": "leagueBuy",
                 "state": ItemStates.NOT_STARTED
             },
             {
                 "stageName": "Buy a sub (1000 pts)",
+                "id": "leagueSub",
                 "state": ItemStates.NOT_STARTED
             }
         ]
