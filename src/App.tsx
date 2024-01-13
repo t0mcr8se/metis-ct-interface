@@ -3,6 +3,8 @@ import { createWeb3Modal } from '@web3modal/wagmi/react'
 import {config, metis_sepolia} from './config'
 import Home from './pages/Home/index.tsx'
 import { WC_PROJECT_ID } from './constants/index.ts'
+import { scoresClient } from './api/apollo.ts'
+import { ApolloProvider } from '@apollo/client'
 
 createWeb3Modal({ 
     wagmiConfig: config, 
@@ -17,7 +19,9 @@ createWeb3Modal({
 function App() {
     return (
         <WagmiConfig config={config}>
-            <Home />
+            <ApolloProvider client={scoresClient}>
+                <Home />
+            </ApolloProvider>
         </WagmiConfig>
     )
 }
