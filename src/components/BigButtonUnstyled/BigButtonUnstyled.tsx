@@ -13,7 +13,7 @@ const BigButtonUnstyled: FC<IBigButtonUnstyled> = ({buttonText, buttonIcon}) => 
         <>
             <div className={`${styles.big_btn} ${styles.big_btn_unstyled}`}>
                 <div className={styles.big_btn_name}>
-                    <span>{buttonText}Share on <br className='sm:hidden'/>Twitter X</span>
+                    <span>{buttonText}Boost Your Score Sharing on X</span>
                     <img src={arrow_right_black} alt="" />
                 </div>
                 <div>
