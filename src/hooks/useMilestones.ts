@@ -28,3 +28,10 @@ export function useCards (address?: string) {
         
     }, [user])
 }
+
+export function useCompleted (address?: string) {
+    const cards = useCards(address)
+    return useMemo(() => {
+        return cards.every(card => card.state == ItemStates.COMPLETED)
+    }, [cards])
+}

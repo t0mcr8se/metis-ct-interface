@@ -48,6 +48,7 @@ const TwitterModal: FC<ITwitterModal> = ({
                             <p>Share your accomplishment on X to gain 5000 XP! [Optional]</p>
                             <p>Click on the Post button and don't change anything in the post to make sure our indexers catch your address for adding the points</p>
                             <p>The points will be added at any time during community testing</p>
+                            <p>Note: Please make sure that the address in the tweet is the same address that you're using in community testing</p>
                         </div>
                         
                     </div>
