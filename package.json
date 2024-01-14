@@ -15,6 +15,7 @@
     "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-twitter-widgets": "^1.11.0",
     "viem": "1.21.4",
     "wagmi": "1.4.13-cjs"
   },

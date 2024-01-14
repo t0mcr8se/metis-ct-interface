@@ -1,0 +1,131 @@
+.card_modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal_body {
+    background: #313144;
+    padding: 30px;
+    max-width: 760px;
+    border-radius: 15px;
+    margin: 20px 40px;
+}
+
+.modal_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal_header_close:hover {
+    cursor: pointer;
+}
+
+.modal_content {
+    margin-bottom: 20px;
+}
+
+.modal_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal_text {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.modal_video {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 0 5%;
+}
+
+.modal_video iframe {
+    width: 100%;
+    height: 310px;
+    border-radius: 20px;
+    background: #000;
+}
+
+.modal_history {
+    margin-bottom: 20px;
+}
+
+.modal_history_items {
+
+}
+
+.modal_history_item:not(:last-child) {
+    border-left: 1px solid #fff;
+}
+
+.modal_history_item:last-child {
+    border-left: 1px solid #313144;
+}
+
+.modal_history_item {
+    position: relative;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 25px;
+    padding-bottom: 13px;
+    margin-left: 7px;
+}
+
+.modal_history_item::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #313144;
+    border: 1px solid #fff;
+    top: 0;
+    left: -8px;
+    /* box-shadow: 0px 0px 10px 4px rgba(255, 255, 255, 0.2); */
+}
+
+.modal_history_item_completed {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.modal_history_item_completed::before {
+    background: #fff;
+    box-shadow: 0px 0px 10px 4px rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 700px) {
+    .modal_body {
+        margin: 20px 20px;
+    }
+    .modal_video {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .modal_body {
+       padding: 15px;
+    }
+}

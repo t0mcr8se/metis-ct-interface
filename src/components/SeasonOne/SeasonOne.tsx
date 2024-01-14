@@ -2,7 +2,6 @@
 
 import TitleOne from '../TitleOne/TitleOne.tsx'
 import SliderMain from '../SliderMain/SliderMain.tsx'
-import BigButtonPrimary from '../BigButtonPrimary/BigButtonPrimary.tsx'
 import styles from './SeasonOne.module.css'
 import { useAccount } from 'wagmi'
 
@@ -32,7 +31,7 @@ function SeasonOne() {
                     <center>{(!isConnected || !isConnecting) && <w3m-button />}</center>
                     
                     <div className='mb-10 sm:mb-14 md:mb-20'></div>
-                    <BigButtonPrimary />
+                    {/* <BigButtonPrimary /> */}
                 </div>
             </div>
         </>
