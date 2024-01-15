@@ -54,7 +54,7 @@ const cards: TCards[] = [
         buttonText: "Claim",
         "history": [
             {
-                "stageName": "Claim tokens from telegram bot",
+                "stageName": "Claim tokens from telegram bot (500 pts)",
                 "id": "joinId",
                 "state": ItemStates.NOT_STARTED
             }
@@ -105,7 +105,7 @@ const cards: TCards[] = [
                 "state": ItemStates.NOT_STARTED
             },
             {
-                "stageName": "Provide LP (300 pts)",
+                "stageName": "Provide LP (500 pts)",
                 "id": "netswapLp",
                 "state": ItemStates.NOT_STARTED
             },
@@ -128,7 +128,7 @@ const cards: TCards[] = [
                 "state": ItemStates.NOT_STARTED
             },
             {
-                "stageName": "Provide LP (300 pts)",
+                "stageName": "Provide LP (500 pts)",
                 "id": "hummusLp",
                 "state": ItemStates.NOT_STARTED
             }
