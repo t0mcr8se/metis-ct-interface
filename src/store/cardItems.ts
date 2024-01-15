@@ -142,7 +142,7 @@ const cards: TCards[] = [
         "state": ItemStates.NOT_STARTED,
         "cardsModalIcon": modalMidas,
         "descriptionText": "Connect to Midas and complete the milestones below",
-        "url": "https://www.midas.game/",
+        "url": "https://dev.midas.game/",
         // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
         "history": [
             {
