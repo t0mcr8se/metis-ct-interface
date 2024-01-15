@@ -23,6 +23,8 @@ export const USER_QUERY = gql`
           midasLottery
           leagueSub
           leagueBuy
+          hummusLp
+          hummusSwap
         }
       }
 `
