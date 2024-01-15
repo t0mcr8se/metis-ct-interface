@@ -1,9 +1,7 @@
 import { FC, useState } from 'react'
 import styles from './BigButtonUnstyled.module.css'
 import arrow_right_black from '../../assets/images/arrow_right_black.svg'
-import { useAccount } from 'wagmi'
 import TwitterModal from '../TwitterModal/TwitterModal'
-import { useCompleted } from '../../hooks/useMilestones'
 
 interface IBigButtonUnstyled {
     buttonText: string,
@@ -14,11 +12,7 @@ const BigButtonUnstyled: FC<IBigButtonUnstyled> = ({buttonText, buttonIcon}) => 
 
     const [openedModal, setOpenedModal] = useState(false)
 
-    const {isConnected, address} = useAccount()
-    const isCompleted = useCompleted(address)
-
     const openModal = () => {
-        if(!isConnected || !isCompleted) return
         setOpenedModal(true)
     }
     const closeModal = () => {

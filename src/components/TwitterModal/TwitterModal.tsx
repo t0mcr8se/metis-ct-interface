@@ -13,8 +13,11 @@ interface ITwitterModal {
     setOpenedModal: Dispatch<SetStateAction<boolean>>,
 }
 
-const TWITTER_TEXT=`Wrapped up an epic journey in @MetisDAO Decentralized Sequencers Community Testing Season 1! 🚀 Grateful for the experience and excited for the 2 season.
-`
+const TWITTER_TEXT=`I just completed Season 1 of Community Testing for the #Metis Decentralized Sequencer and it was EPIC!
+
+I will keep testing DApps and earning points to get rewards!
+%ADDRESS
+Have you joined yet?!`
 
 const TwitterModal: FC<ITwitterModal> = ({ 
     openedModal, 
@@ -52,14 +55,14 @@ const TwitterModal: FC<ITwitterModal> = ({
                         </div>
                         
                     </div>
-                    <center><Share 
+                    <center>{address && <Share 
                             url="https://decentralize.metis.io"
                             options={{
-                                hashtags: "MetisCommunityTester,DecentralizeWithMetis",
-                                text: `${TWITTER_TEXT}${address}`,
+                                hashtags: "MetisCommunityTesting",
+                                text: TWITTER_TEXT.replace('%ADDRESS', address),
                                 size: "large"
                             }}
-                        /></center>
+                        />}</center>
                 </div>
             </div>
         </>
