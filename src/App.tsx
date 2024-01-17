@@ -5,6 +5,7 @@ import Home from './pages/Home/index.tsx'
 import { WC_PROJECT_ID } from './constants/index.ts'
 import { scoresClient } from './api/apollo.ts'
 import { ApolloProvider } from '@apollo/client'
+import { Analytics } from '@vercel/analytics/react';
 
 createWeb3Modal({ 
     wagmiConfig: config, 
@@ -21,6 +22,7 @@ function App() {
         <WagmiConfig config={config}>
             <ApolloProvider client={scoresClient}>
                 <Home />
+                <Analytics />
             </ApolloProvider>
         </WagmiConfig>
     )
