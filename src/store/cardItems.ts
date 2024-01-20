@@ -152,29 +152,29 @@ const cards: TCards[] = [
             }
         ]
     },
-    {
-        "id": 6,
-        "name": "League Tech",
-        "class": "card_LeagueTech",
-        "icon": league,
-        "state": ItemStates.NOT_STARTED,
-        "cardsModalIcon": modalLeagueTech,
-        "descriptionText": "Connect to LeagueTech and complete the milestones below",
-        "url": "https://dev.league.tech/",
-        // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
-        "history": [
-            {
-                "stageName": "Trade (buy/sell) shares (1000 pts)",
-                "id": "leagueBuy",
-                "state": ItemStates.NOT_STARTED
-            },
-            {
-                "stageName": "Buy a sub (1000 pts)",
-                "id": "leagueSub",
-                "state": ItemStates.NOT_STARTED
-            }
-        ]
-    }
+    // {
+    //     "id": 6,
+    //     "name": "League Tech",
+    //     "class": "card_LeagueTech",
+    //     "icon": league,
+    //     "state": ItemStates.NOT_STARTED,
+    //     "cardsModalIcon": modalLeagueTech,
+    //     "descriptionText": "Connect to LeagueTech and complete the milestones below",
+    //     "url": "https://dev.league.tech/",
+    //     // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
+    //     "history": [
+    //         {
+    //             "stageName": "Trade (buy/sell) shares (1000 pts)",
+    //             "id": "leagueBuy",
+    //             "state": ItemStates.NOT_STARTED
+    //         },
+    //         {
+    //             "stageName": "Buy a sub (1000 pts)",
+    //             "id": "leagueSub",
+    //             "state": ItemStates.NOT_STARTED
+    //         }
+    //     ]
+    // }
 ]
 
 export default cards 
