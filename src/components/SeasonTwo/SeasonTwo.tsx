@@ -5,6 +5,8 @@ import BigButtonUnstyled from '../BigButtonUnstyled/BigButtonUnstyled'
 import { useAccount } from 'wagmi'
 import { useCompleted } from '../../hooks/useMilestones.ts'
 import S2Status from '../S2Status/S2Status.tsx'
+import { Wheel } from '../Wheel/Loadable.ts'
+import wheelItems from '../../store/wheelItems.ts'
 // import styled from "styled-components";
 
 // const WheelComponent = () => {
@@ -32,6 +34,7 @@ function SeasonTwo() {
                     <TitleOne text='Season Two' titleType='white' />
                     <div className={styles.season_two_subtitle}>Spin the wheel now and get rewarded</div>
                     <S2Status />
+                    <Wheel items={wheelItems} />
                 </div>
             </div>
         </>
