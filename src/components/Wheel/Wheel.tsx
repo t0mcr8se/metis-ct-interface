@@ -18,12 +18,12 @@ interface WheelProps {
 }
 
 interface WheelState {
-  selectedItem: any;
+  selectedItem;
   isActive: boolean;
   angle: number;
   startAngle: number;
   currentAngle: number;
-  boxCenterPoint: any;
+  boxCenterPoint;
 }
 
 interface ResultData {
@@ -53,7 +53,7 @@ export const setResults = (data: ResultData) => {
   };
 
 export class Wheel extends React.Component<WheelProps, WheelState> {
-  box: any;
+  box;
   state: WheelState;
   constructor(props: WheelProps) {
     super(props);

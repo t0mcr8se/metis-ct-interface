@@ -23,7 +23,7 @@ export function customStyle(index: number) {
     return resultData;
   }
   
-  export function getPositionFromCenter(event: any, boxCenterPoint: any) {
+  export function getPositionFromCenter(event, boxCenterPoint) {
     let clientX, clientY;
     if (event.targetTouches && event.targetTouches[0]) {
       clientX = event.targetTouches[0].pageX;
