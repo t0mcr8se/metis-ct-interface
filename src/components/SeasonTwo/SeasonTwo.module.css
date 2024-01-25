@@ -9,17 +9,19 @@
     margin-bottom: 80px;
 }
 .season_two_subtitle {
-    font-size: 26px;
-    font-weight: 600;
+    color: #00d2ff;
     line-height: 31px;
     letter-spacing: 0.04em;
     text-align: center;
+    font: 700 32px/36px Raleway, sans-serif;
 }
 
 @media screen and (max-width: 800px) {
     .season_two_subtitle {
         font-size: 20px;
         font-weight: 500;
+        color: #00d2ff;
+
     }
 }
 
@@ -37,7 +39,20 @@
         letter-spacing: 0.04em;
     }
     .season_two_subtitle {
+        color: #00d2ff;
         font-size: 16px;
         font-weight: 500;
+        letter-spacing: 1.28px;
+        font: 700 32px/36px;
     }
 }
+
+/* .season_two_subtitle {
+    color: #00d2ff;
+    text-align: center;
+    letter-spacing: 1.28px;
+    align-self: center;
+    margin-top: 39px;
+    max-width: 426px;
+    font: 700 32px/36px Raleway, sans-serif;
+} */

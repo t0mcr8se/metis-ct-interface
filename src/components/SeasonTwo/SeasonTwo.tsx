@@ -4,7 +4,21 @@ import twitterButton from '../../assets/images/twitter.svg'
 import BigButtonUnstyled from '../BigButtonUnstyled/BigButtonUnstyled'
 import { useAccount } from 'wagmi'
 import { useCompleted } from '../../hooks/useMilestones.ts'
+import S2Status from '../S2Status/S2Status.tsx'
+// import styled from "styled-components";
 
+// const WheelComponent = () => {
+//   return (
+//     <StyledDiv>
+//       <h1>Spin the wheel now and get rewarded</h1>
+//       {/* <img alt="Image 1" />
+//       <img alt="Image 2" />
+//       <img alt="Image 3" /> */}
+//     </StyledDiv>
+//   );
+// };
+
+// export default WheelComponent;
 
 function SeasonTwo() {
     const {address} = useAccount()
@@ -15,9 +29,9 @@ function SeasonTwo() {
             <div className={styles.season_two}>
                 <div className="container">
                     {isCompleted && <BigButtonUnstyled buttonText='' buttonIcon={twitterButton} />}
-                    <TitleOne text='Season Two' titleType='gray' />
-                    {/* <div className={`${styles.season_title} ${styles.season_gray}`}>Season Two</div> */}
-                    <div className={styles.season_two_subtitle}>COMING SOON</div>
+                    <TitleOne text='Season Two' titleType='white' />
+                    <div className={styles.season_two_subtitle}>Spin the wheel now and get rewarded</div>
+                    <S2Status />
                 </div>
             </div>
         </>
