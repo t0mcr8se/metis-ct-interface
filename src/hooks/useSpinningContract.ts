@@ -4,6 +4,12 @@ import { PROBABILITIES, SPINNING_ADDRESS } from "../constants";
 import { useEffect, useMemo } from "react";
 import { decodeEventLog, formatEther } from "viem";
 
+interface SpinEventArgs {
+    spinResult: bigint
+    tokensAdded: bigint
+    pointsAdded: bigint
+}
+
 export function useSpins(address?: string) {
     return useContractRead({
         staleTime: 10000,
@@ -88,10 +94,11 @@ export function useSpinWheel() {
         data: txData.logs[txData.logs.length - 1].data,
         topics: txData.logs[txData.logs.length - 1].topics
       })
+      const args = unpacked.args as SpinEventArgs
       return {
-        tokensAdded: unpacked.args['tokensAdded'],
-        pointsAdded: unpacked.args['pointsAdded'],
-        spinResult: unpacked.args['spinResult']
+        tokensAdded: args.tokensAdded,
+        pointsAdded: args.pointsAdded,
+        spinResult: args.spinResult
       }
     }, [txData, isFetchError, isFetchLoading, isFetching, isError, isLoading, isRefetching])
     const spinResultIndex = useMemo(() => {

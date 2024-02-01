@@ -89,10 +89,10 @@ export function Wheel ({ items }: {items: string[]}) {
     if(isSuccess && isFetchSuccess) {
       setModalType(TxModalType.SUCCESS)
       setOpenedModal(true)
-      if(tokensAdded > 0n){
+      if(tokensAdded && tokensAdded > 0n){
         setContent(`You have won ${formatEther(tokensAdded)} METIS`)
       }
-      if(pointsAdded > 0n) {
+      if(pointsAdded && pointsAdded > 0n) {
         setContent(`You have won ${pointsAdded} XP points`)
       }
     }

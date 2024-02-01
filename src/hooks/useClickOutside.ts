@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-export function useClickOutside(ref, setState) {
+export function useClickOutside(ref: any, setState: any) {
     useEffect(() => {
-        const handleClickOutside = (event) => {
+        const handleClickOutside = (event:any) => {
             if (ref.current && !ref.current.contains(event.target)) {
                 ref.current.blur()
                 setState(false)
