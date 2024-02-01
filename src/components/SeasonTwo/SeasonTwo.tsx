@@ -2,39 +2,35 @@ import TitleOne from '../TitleOne/TitleOne.tsx'
 import styles from './SeasonTwo.module.css'
 import twitterButton from '../../assets/images/twitter.svg'
 import BigButtonUnstyled from '../BigButtonUnstyled/BigButtonUnstyled'
-import { useAccount } from 'wagmi'
+import { useAccount, useChainId, useNetwork, useSwitchNetwork } from 'wagmi'
 import { useCompleted } from '../../hooks/useMilestones.ts'
 import S2Status from '../S2Status/S2Status.tsx'
-import { Wheel } from '../Wheel/Loadable.ts'
-import wheelItems from '../../store/wheelItems.ts'
-// import styled from "styled-components";
+import { Wheel } from '../Wheel/Loadable'
+import { useSpinningWheelItems } from '../../hooks/useSpinningContract.ts'
+import { metis_sepolia } from '../../config.ts'
 
-// const WheelComponent = () => {
-//   return (
-//     <StyledDiv>
-//       <h1>Spin the wheel now and get rewarded</h1>
-//       {/* <img alt="Image 1" />
-//       <img alt="Image 2" />
-//       <img alt="Image 3" /> */}
-//     </StyledDiv>
-//   );
-// };
-
-// export default WheelComponent;
 
 function SeasonTwo() {
     const {address} = useAccount()
+    const {chain} = useNetwork()
+
     const isCompleted = useCompleted(address)
+    const wheelItems = useSpinningWheelItems()
     
     return (
         <>
             <div className={styles.season_two}>
                 <div className="container">
                     {isCompleted && <BigButtonUnstyled buttonText='' buttonIcon={twitterButton} />}
-                    <TitleOne text='Season Two' titleType='white' />
-                    <div className={styles.season_two_subtitle}>Spin the wheel now and get rewarded</div>
-                    <S2Status />
-                    <Wheel items={wheelItems} />
+                    
+                        {!chain ? (<><w3m-connect-button/></>): 
+                            chain.id !== metis_sepolia.id ? (<><h2>Switch network to Metis Sepolia: <w3m-network-button /></h2></>):
+                            (<><TitleOne text='Season Two' titleType='white' />
+                            <div className={styles.season_two_subtitle}>Spin the wheel now and get rewarded</div>
+                            <S2Status />
+                            <Wheel items={wheelItems} />
+                            </>)
+                        }
                 </div>
             </div>
         </>

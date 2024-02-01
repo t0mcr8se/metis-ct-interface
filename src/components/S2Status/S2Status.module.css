@@ -3,6 +3,35 @@
     margin: auto 0;
     font: 500 18px Poppins, sans-serif;
     width: auto;
+    /* text-align: center; */
+}
+.card_info.disabled {
+    background-color: #aaa;
+    /* text-align: center; */
+    border-radius: 25px;
+
+}
+.card_info_2 {
+    color: #fff;
+    margin: auto 0;
+    font: 500 18px Poppins, sans-serif;
+    width: auto;
+    /* text-align: center; */
+} 
+.add_spins_input {
+    color: #fff;
+    background-color: rgba(0, 178, 255, 0.5);
+    text-align: center;
+    /* margin: auto 0; */
+    font: 500 18px Poppins, sans-serif;
+    /* width: 25%; */
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 25px;
+    max-width: fit-content;
+}
+.add_spins_input.disabled {
+    color: #aaa;
 }
 
 .card_image {
@@ -24,5 +53,7 @@
     line-height: normal;
     max-width: fit-content;
     width: auto;
-    margin-left: 43%;
+    margin: auto;
+    margin-top: 2%;
+    /* margin-left: 25%; */
 }

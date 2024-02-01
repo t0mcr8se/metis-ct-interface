@@ -1,8 +1,8 @@
 export const arrowStyles = {
   // position: 'absolute',
-  marginTop: '2%',
-  'margin-left': '49%',
-  paddingBottom: '2%',
+  marginTop: '3%',
+  paddingTop: 10,
+  margin: 'auto',
   zIndex: 1,
 } as React.CSSProperties;
 

@@ -3,7 +3,7 @@
   --wheel-size: 400px;
   --wheel-slice-spacing: 50px;
   --wheel-border-size: 5px;
-  --wheel-color:#832A4B;
+  --wheel-color:#024680;
   --neutral-color: white;
   --PI: 3.14159265358979;
   --nb-item: 1;
@@ -68,6 +68,19 @@
   cursor: pointer;
 }
 
+/* @keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wheel.spinning {
+  animation: spin 1s linear infinite;
+} */
+
 .wheel.spinning {
   transition: transform var(--spinning-duration);
   transform: rotate(calc(var(--nb-turn) * 360deg + (-360deg * var(--selected-item) / var(--nb-item, 1))));
@@ -77,11 +90,11 @@
 .wheel::after {
   display: block;
   position: absolute;
-  content: 'Spin';
+  content: 'SPIN';
   align-content: center;
   align-items: center;
   text-align: center;
-  background-color:rgba(255, 221, 161, 1);
+  background-color:rgba(169, 229, 255, 1);
   color:rgba(0, 0, 0, 0.87);
   width: 65px;
   height: 65px;

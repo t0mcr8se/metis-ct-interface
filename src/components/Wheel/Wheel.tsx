@@ -1,193 +1,132 @@
-import React from 'react';
-
+import { useState, useRef, useMemo, useEffect } from 'react';
 import './wheel.css';
 import Arrow from './arrow.svg';
 import Ellipse from './Ellipse.svg';
-// import { setResults } from 'services/spinResults';
 import {
   customStyle,
-  isTouchScreendevice,
-  getFormattedResult,
-  getPositionFromCenter,
   getWheelVars,
 } from '../../utils/helper';
 import { arrowStyles, leftEllipseStyles, rightEllipseStyles } from './styles';
-interface WheelProps {
-  items: string[];
-  onSelectItem?: (selectedItem: number) => void;
-}
+import { useSpinWheel } from '../../hooks/useSpinningContract';
+import TxModal, { TxModalType } from '../TxModal/TxModal';
+import { formatEther } from 'viem';
 
-interface WheelState {
-  selectedItem;
-  isActive: boolean;
-  angle: number;
-  startAngle: number;
-  currentAngle: number;
-  boxCenterPoint;
-}
 
-interface ResultData {
-    web_client: string;
-    timestamp: Date;
-    spin_result_index: number;
-}
+export function Wheel ({ items }: {items: string[]}) {
+  const boxRef = useRef(null);
+  const [isSpun, setIsSpun] = useState(false)
+  const [spinningDuration, setSpinningDuration] = useState(1000)
+  const [numSpins, setNumSpins] = useState(5000)
 
-export const setResults = (data: ResultData) => {
-    fetch('https://sheet.best/api/sheets/77de7d82-5df3-41d8-91c3-980bf04b04c4', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(r => r.json())
-      .then(data => {
-        // The response comes here
-        console.log(data);
-      })
-      .catch(error => {
-        // Errors are reported there
-        console.log(error);
-      });
+  const [modalType, setModalType] = useState(TxModalType.FAIL)
+  const [content, setContent] = useState("")
+  const [openedModal, setOpenedModal] = useState(false)
+
+  const {
+    spinWheel,
+    isLoading,
+    isFetchLoading,
+    isRefetching,
+    isError,
+    isIdle,
+    isFetchIdle,
+    spinResultIndex: selectedItem,
+    error,
+    fetchingError,
+    isFetchError,
+    isSuccess,
+    data: txHash,
+    isFetchSuccess,
+    tokensAdded,
+    pointsAdded
+  } = useSpinWheel()
+
+  const selectItem = () => {
+    if(isFetchLoading || isRefetching || isLoading)
+      return
+
+    if(isSpun) 
+      return setIsSpun(false)
+    
+    setSpinningDuration(1000)
+    setNumSpins(5000)
+    setIsSpun(true)
+    spinWheel()
   };
 
-export class Wheel extends React.Component<WheelProps, WheelState> {
-  box;
-  state: WheelState;
-  constructor(props: WheelProps) {
-    super(props);
-    this.state = {
-      selectedItem: null,
-      isActive: false,
-      angle: 0,
-      startAngle: 0,
-      currentAngle: 0,
-      boxCenterPoint: {},
-    };
-    this.selectItem = this.selectItem.bind(this);
-    this.mouseDownHandler = this.mouseDownHandler.bind(this);
-    this.mouseUpHandler = this.mouseUpHandler.bind(this);
-    this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
-    this.deslectAll = this.deslectAll.bind(this);
-  }
+  const wheelVars = useMemo(() => {
+    return getWheelVars(items.length, selectedItem, spinningDuration, numSpins)
+  }, [selectedItem, items.length, numSpins, spinningDuration])
 
-  componentDidMount() {
-    const boxPosition = this.box.getBoundingClientRect();
-    const boxCenterX = boxPosition.left + boxPosition.width / 2;
-    const boxCenterY = boxPosition.top + boxPosition.height / 2;
-
-    this.setState({
-      boxCenterPoint: { x: boxCenterX, y: boxCenterY },
-    });
-
-    window.onmouseup = this.mouseUpHandler;
-    window.onmousemove = this.mouseMoveHandler;
-
-    if (isTouchScreendevice()) window.ontouchend = this.mouseUpHandler;
-    window.ontouchmove = this.mouseMoveHandler;
-  }
-
-  mouseDownHandler(event) {
-    event.stopPropagation();
-    const { boxCenterPoint } = this.state;
-    const fromBoxCenter = getPositionFromCenter(event, boxCenterPoint);
-    const newStartAngle =
-      90 - Math.atan2(fromBoxCenter.y, fromBoxCenter.x) * (180 / Math.PI);
-    this.setState({
-      startAngle: newStartAngle,
-      isActive: true,
-    });
-  }
-
-  mouseUpHandler(event) {
-    this.deslectAll();
-    event.stopPropagation();
-    const { isActive, angle, startAngle, currentAngle } = this.state;
-    if (isActive) {
-      const newCurrentAngle = currentAngle + (angle - startAngle);
-      this.setState({
-        isActive: false,
-        currentAngle: newCurrentAngle,
-      });
+  useEffect(() => {
+    if(isSpun && isError && isIdle && isFetchIdle && !isLoading && !isFetchLoading && !isRefetching) {
+      setIsSpun(false)
+      setNumSpins(0)
+      setSpinningDuration(1)
     }
-  }
-
-  mouseMoveHandler(event) {
-    const { isActive, currentAngle, startAngle, boxCenterPoint } = this.state;
-    if (isActive) {
-      const fromBoxCenter = getPositionFromCenter(event, boxCenterPoint);
-      const newAngle =
-        90 - Math.atan2(fromBoxCenter.y, fromBoxCenter.x) * (180 / Math.PI);
-
-      this.box.style.transform =
-        'rotate(' +
-        (currentAngle + (newAngle - (startAngle ? startAngle : 0))) +
-        'deg)';
-      this.setState({ angle: newAngle });
+    if(!isLoading && !isFetchLoading && !isRefetching && isSpun){
+      setNumSpins(0)
+      setSpinningDuration(1)
     }
-  }
+  }, [isSpun, isLoading, isFetchLoading, isRefetching, isError, isIdle, isFetchIdle])
 
-  selectItem() {
-    if (this.state.selectedItem === null) {
-      const selectedItem = Math.floor(Math.random() * this.props.items.length);
-      // set result to google sheets
-      const data = getFormattedResult(selectedItem);
-      setResults(data);
+  const spinning = useMemo(() => {
+    return isSpun || isLoading || isFetchLoading || isRefetching ? 'spinning' : '';
+  }, [isSpun, isLoading, isFetchLoading, isRefetching])
 
-      if (this.props.onSelectItem) {
-        this.props.onSelectItem(selectedItem);
+  useEffect(() => {
+    if(isError) {
+      setContent(`transaction failed with error: ${error}`)
+      setModalType(TxModalType.FAIL)
+      setOpenedModal(true)
+      return
+    }
+    if(isSuccess && isFetchError) {
+      setContent(`Could not fetch transaction, but the transaction was recoreded with txHash ${txHash?.hash}, your tokens/points will be added shortly, better refresh: ${fetchingError}`)
+      setModalType(TxModalType.SUCCESS)
+      setOpenedModal(true)
+    }
+    if(isSuccess && isFetchSuccess) {
+      setModalType(TxModalType.SUCCESS)
+      setOpenedModal(true)
+      if(tokensAdded > 0n){
+        setContent(`You have won ${formatEther(tokensAdded)} METIS`)
       }
-      this.setState({ selectedItem });
-    } else {
-      this.setState({ selectedItem: null });
-      setTimeout(this.selectItem, 500);
+      if(pointsAdded > 0n) {
+        setContent(`You have won ${pointsAdded} XP points`)
+      }
     }
+  }, [isError, error, isSuccess, setModalType, , setContent, isSuccess, isFetchSuccess, txHash, pointsAdded, tokensAdded, isFetchError])
+
+  const openModal = () => {
+    setOpenedModal(true)
+  }
+  const closeModal = () => {
+    setOpenedModal(false)
+    document.body.style.overflow = 'auto'
   }
 
-  deslectAll() {
-    if (window.getSelection) {
-      window.getSelection()?.removeAllRanges();
-    }
-  }
-
-  renderWheelItems = () => {
-    const { items } = this.props;
-    return items.map((item, index) => (
-      <div className="wheel-item" key={index} style={customStyle(index)}>
-        {item}
-        <img src={Ellipse} style={rightEllipseStyles} />
-        <img src={Ellipse} style={leftEllipseStyles} />
-      </div>
-    ));
-  };
-
-  render() {
-    const { selectedItem } = this.state;
-    const { items } = this.props;
-    const wheelVars = getWheelVars(items.length, selectedItem);
-    const spinning = selectedItem !== null ? 'spinning' : '';
-
-    return (
-      <>
-        <img src={Arrow} style={arrowStyles} />
-        <div
-          className="wheel-container"
-          onMouseDown={this.mouseDownHandler}
-          onMouseUp={this.mouseUpHandler}
-          onTouchStart={this.mouseDownHandler}
-          onTouchEnd={this.mouseUpHandler}
-          ref={div => (this.box = div)}
-        >
-          <div
-            className={`wheel ${spinning}`}
-            style={wheelVars}
-            onClick={this.selectItem}
-          >
-            {this.renderWheelItems()}
-          </div>
+  return (
+    <>
+      <img src={Arrow} style={arrowStyles} alt="" />
+      <div className="wheel-container" ref={boxRef}>
+        <div className={`wheel ${spinning}`} style={wheelVars} onClick={selectItem}>
+          {items.map((item: string, index) => (
+            <div className="wheel-item" key={index} style={customStyle(index)}>
+              {item}
+              <img src={Ellipse} style={rightEllipseStyles} alt="" />
+              <img src={Ellipse} style={leftEllipseStyles} alt="" />
+            </div>
+          ))}
         </div>
-      </>
-    );
-  }
-}
+      </div>
+      <TxModal
+        openedModal={openedModal}
+        setOpenedModal={openModal}
+        closeModal={closeModal}
+        type={modalType}
+        content={content}
+      />
+    </>
+  );
+};
