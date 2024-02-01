@@ -29,7 +29,6 @@ export function useSpinPrice(numSpins: number|bigint = 1) {
 export function useSpinningWheelItems() {
     const spinPrice = useSpinPrice()
     return useMemo(() => {
-        if (!spinPrice) return
         const spinBI = (spinPrice || 0n) as bigint
         return [
             `2000 XP`,

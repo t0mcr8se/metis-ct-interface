@@ -5,7 +5,7 @@ import BigButtonUnstyled from '../BigButtonUnstyled/BigButtonUnstyled'
 import { useAccount, useNetwork } from 'wagmi'
 import { useCompleted } from '../../hooks/useMilestones.ts'
 import S2Status from '../S2Status/S2Status.tsx'
-import { Wheel } from '../Wheel/Loadable'
+import { Wheel } from '../Wheel/Wheel'
 import { useSpinningWheelItems } from '../../hooks/useSpinningContract.ts'
 import { metis_sepolia } from '../../config.ts'
 
