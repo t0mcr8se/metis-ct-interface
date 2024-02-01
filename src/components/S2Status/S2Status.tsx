@@ -20,7 +20,7 @@ function S2Status() {
   }, [numSpins])
 
   const updateSpins = (e: BaseSyntheticEvent) => {
-    let inp = parseInt(e.target.value)
+    const inp = parseInt(e.target.value)
     if(isNaN(inp))
       return setInput(0)
     setInput(inp)
@@ -40,7 +40,7 @@ function S2Status() {
       setOpenedModal(true)
       setContent("Successfully bought spins")
     }
-  }, [isError, error, isSuccess, setModalType, , setContent])
+  }, [isError, error, isSuccess, setModalType, setContent])
 
   const buySpins = () => {
     buy({

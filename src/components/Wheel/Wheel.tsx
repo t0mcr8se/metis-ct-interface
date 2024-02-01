@@ -96,7 +96,7 @@ export function Wheel ({ items }: {items: string[]}) {
         setContent(`You have won ${pointsAdded} XP points`)
       }
     }
-  }, [isError, error, isSuccess, setModalType, , setContent, isSuccess, isFetchSuccess, txHash, pointsAdded, tokensAdded, isFetchError])
+  }, [isError, error, isSuccess, setModalType, setContent, isFetchSuccess, txHash, pointsAdded, tokensAdded, isFetchError, fetchingError])
 
   const openModal = () => {
     setOpenedModal(true)
@@ -129,4 +129,4 @@ export function Wheel ({ items }: {items: string[]}) {
       />
     </>
   );
-};
+}

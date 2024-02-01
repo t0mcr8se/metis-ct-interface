@@ -94,7 +94,7 @@ export function useSpinWheel() {
         pointsAdded: unpacked.args['pointsAdded'],
         spinResult: unpacked.args['spinResult']
       }
-    }, [txData, isFetchError, isFetchError, isFetchLoading, isFetching, isError, isLoading, isRefetching])
+    }, [txData, isFetchError, isFetchLoading, isFetching, isError, isLoading, isRefetching])
     const spinResultIndex = useMemo(() => {
         if(spinResult === undefined) return
         return PROBABILITIES.reduce((cur, _, i) => { return Number(spinResult) >= PROBABILITIES[cur] ? i : cur }, 0)
