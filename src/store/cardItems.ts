@@ -180,6 +180,25 @@ export const szn1Cards: TCards[] = [
 ]
 export const szn2Cards = [
     {
+        "id": 1,
+        "name": "Claim Test Tokens",
+        "class": "card_Metis",
+        "icon": metis,
+        "state": ItemStates.NOT_STARTED,
+        "cardsModalIcon": modalMetis,
+        "descriptionText": "Connect your wallet and claim your test tokens, clicking on \"Start Now\" will open a Telegram conversation with the bot that distributes the tokens. It is sufficient to click on \"start\" button and then bot will send you the tokens ",
+        "url": TG_BOT,
+        // "videoUrl": "",
+        buttonText: "Claim",
+        "history": [
+            {
+                "stageName": "Claim tokens from telegram bot (500 pts)",
+                "id": "joinId",
+                "state": ItemStates.NOT_STARTED
+            }
+        ]
+    },
+    {
         "id": 2,
         "name": "Enki",
         "class": "card_Enki",

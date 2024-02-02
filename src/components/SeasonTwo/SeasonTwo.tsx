@@ -20,20 +20,23 @@ function SeasonTwo() {
     
     return (
         <>
-            <div className={styles.season_two}>
+            <div className={styles.season_two} id="szn2">
                 <div className="container">
                     {isCompleted && <BigButtonUnstyled buttonText='' buttonIcon={twitterButton} />}
-                    
-                        {!chain ? (<><w3m-connect-button/></>): 
-                            chain.id !== metis_sepolia.id ? (<><h2>Switch network to Metis Sepolia: <w3m-network-button /></h2></>):
-                            (<><TitleOne text='Season Two' titleType='white' />
-                            <div className={styles.season_two_subtitle}>Spin the wheel now and get rewarded</div>
-                            <S2Status />
-                            <Wheel items={wheelItems} />
-                            <br />
-                            <Cards season={2} />
-                            </>)
-                        }
+                    <TitleOne text='Season Two' titleType='white' /> 
+                    <div className={styles.info_text}>
+                        {!chain ? (<p>Connect your wallet</p>): chain.id!==metis_sepolia.id ? (<p>Switch network to Metis sepolia by clicking the button below and choosing Metis Sepolia in the popup and confirming the network switch in you wallet</p>):(<></>)}
+                    </div>
+                    {!chain ? (<center><w3m-connect-button/></center>): 
+                        chain.id !== metis_sepolia.id ? (<center><w3m-network-button /></center>):
+                        (<>
+                        <div className={styles.season_two_subtitle}>Spin the wheel now and get rewarded</div>
+                        <S2Status />
+                        <Wheel items={wheelItems} />
+                        <br />
+                        <Cards season={2} />
+                        </>)
+                    }
                 </div>
             </div>
         </>

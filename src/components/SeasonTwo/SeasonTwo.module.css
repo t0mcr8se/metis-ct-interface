@@ -8,6 +8,17 @@
 .season_two >div >*:first-child {
     margin-bottom: 80px;
 }
+
+.info_text {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .season_two_subtitle {
     color: #00d2ff;
     line-height: 31px;
