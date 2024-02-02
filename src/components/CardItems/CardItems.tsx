@@ -6,9 +6,9 @@ import { useCards } from '../../hooks/useMilestones.ts'
 import { useAccount } from 'wagmi'
 
 
-function Cards() {
+function Cards({season}: {season: number}) {
     const { address } = useAccount()
-    const cards = useCards(address)
+    const cards = useCards(address, season)
 
     return (
         <div className={styles.cards}>

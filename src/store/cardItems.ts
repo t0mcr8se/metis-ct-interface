@@ -4,6 +4,7 @@ import netswap from '../assets/cards/Netswap.svg'
 import hummus from '../assets/cards/Hummus.svg'
 import midas from '../assets/cards/Midas.svg'
 // import league from '../assets/cards/LeagueTech.svg'
+import enki from '../assets/cards/Enki.svg'
 
 import modalTethys from '../assets/modal_icons/tethys.svg'
 import modalMetis from '../assets/modal_icons/Metis.svg'
@@ -11,6 +12,7 @@ import modalNetswap from '../assets/modal_icons/Netswap.svg'
 import modalMidas from '../assets/modal_icons/midas.svg'
 // import modalLeagueTech from '../assets/modal_icons/LeagueTech.svg'
 import modalHummus from '../assets/modal_icons/hummus.svg'
+import modalEnki from '../assets/modal_icons/Enki.svg'
 import { TG_BOT } from '../constants'
 
 export enum ItemStates {
@@ -40,7 +42,7 @@ export type TCards = {
     buttonText?: string
 }
 
-const cards: TCards[] = [
+export const szn1Cards: TCards[] = [
     {
         "id": 1,
         "name": "Claim Test Tokens",
@@ -176,5 +178,33 @@ const cards: TCards[] = [
     //     ]
     // }
 ]
-
-export default cards 
+export const szn2Cards = [
+    {
+        "id": 2,
+        "name": "Enki",
+        "class": "card_Enki",
+        "icon": enki,
+        "state": ItemStates.NOT_STARTED,
+        "cardsModalIcon": modalEnki,
+        "descriptionText": "Connect to Enki and complete the milestones below",
+        "url": "https://testnet.enkixyz.com/",
+        // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
+        "history": [
+            {
+                "stageName": "Stake Metis into eMetis(eMetisMinter) (1500 pts)",
+                "id": "enkiMetisStake",
+                "state": ItemStates.NOT_STARTED
+            },
+            {
+                "stageName": "Stake eMetis into seMetis vault(seMetis) (1500 pts)",
+                "id": "enkiEMetisStake",
+                "state": ItemStates.NOT_STARTED
+            },
+            {
+                "stageName": "Stake ENKI to vest eMetis rewards from seMetis vault(vesting) (1500 pts)",
+                "id": "enkiStake",
+                "state": ItemStates.NOT_STARTED
+            }
+        ]
+    }
+]

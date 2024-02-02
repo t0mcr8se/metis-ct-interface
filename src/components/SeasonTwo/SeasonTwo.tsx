@@ -8,6 +8,7 @@ import S2Status from '../S2Status/S2Status.tsx'
 import { Wheel } from '../Wheel/Wheel'
 import { useSpinningWheelItems } from '../../hooks/useSpinningContract.ts'
 import { metis_sepolia } from '../../config.ts'
+import Cards from '../CardItems/CardItems.tsx'
 
 
 function SeasonTwo() {
@@ -29,6 +30,8 @@ function SeasonTwo() {
                             <div className={styles.season_two_subtitle}>Spin the wheel now and get rewarded</div>
                             <S2Status />
                             <Wheel items={wheelItems} />
+                            <br />
+                            <Cards season={2} />
                             </>)
                         }
                 </div>
