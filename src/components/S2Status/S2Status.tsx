@@ -63,7 +63,7 @@ function S2Status() {
       <img className={styles.card_image} loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4960abef5065742eaa234a9c64dc62d5092bc5869a0fb0d4a95ccfcc85efe779?apiKey=b68aa9ae8d4a4bd695329e075295d389&" />
       <div className={styles.card_info}>{Number(spins || 0)} Spins &nbsp;</div>
       <input className={`${styles.add_spins_input} ${disabled}`} value={numSpins} onChange={updateSpins} />
-      <div className={`${styles.card_info} ${disabled}`} onClick={buySpins}>&nbsp; Buy Spins &nbsp;</div>
+      <button className={`${styles.card_info} ${disabled}`} onClick={buySpins}>&nbsp; Buy Spins &nbsp;</button>
       <br/>
     </div>
     {(!disabled) && 
