@@ -9,7 +9,7 @@ const Ecosystem = () => {
             <div className={styles.ecosystem}>
                 <div className="container">
                     <div className={styles.title}>Ecosystem dApps</div>
-                    <Cards />
+                    <Cards season={1}/>
                 </div>
             </div>
         </>

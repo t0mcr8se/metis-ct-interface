@@ -1,10 +1,12 @@
 import { useUser } from "./useUser";
-import cards, { ItemStates, TCards } from "../store/cardItems";
+import { ItemStates, TCards, szn1Cards, szn2Cards } from "../store/cardItems";
 import { useMemo } from "react";
 
-export function useCards (address?: string) {
+export function useCards (address?: string, season?: number) {
     const user = useUser(address)
+    
     return useMemo(() => {
+        const cards = season == 1 ? szn1Cards : szn2Cards
         if (!user) return cards
         return cards.reduce<TCards[]>((result, current) => {
             return [
@@ -26,7 +28,7 @@ export function useCards (address?: string) {
         }, [])
 
         
-    }, [user])
+    }, [season, user])
 }
 
 export function useCompleted (address?: string) {

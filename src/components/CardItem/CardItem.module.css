@@ -64,6 +64,9 @@
 .card_LeagueTech {
     background: linear-gradient(94.15deg, #424242 0%, #405A6C 100%);
 }
+.card_Enki {
+    background: linear-gradient(94.15deg, #BE692A 0%, #943341 100%);
+}
 
 .card_state_wrapper {
     position: absolute;

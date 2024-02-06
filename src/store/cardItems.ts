@@ -4,6 +4,7 @@ import netswap from '../assets/cards/Netswap.svg'
 import hummus from '../assets/cards/Hummus.svg'
 import midas from '../assets/cards/Midas.svg'
 // import league from '../assets/cards/LeagueTech.svg'
+import enki from '../assets/cards/Enki.svg'
 
 import modalTethys from '../assets/modal_icons/tethys.svg'
 import modalMetis from '../assets/modal_icons/Metis.svg'
@@ -11,6 +12,7 @@ import modalNetswap from '../assets/modal_icons/Netswap.svg'
 import modalMidas from '../assets/modal_icons/midas.svg'
 // import modalLeagueTech from '../assets/modal_icons/LeagueTech.svg'
 import modalHummus from '../assets/modal_icons/hummus.svg'
+import modalEnki from '../assets/modal_icons/Enki.svg'
 import { TG_BOT } from '../constants'
 
 export enum ItemStates {
@@ -40,7 +42,7 @@ export type TCards = {
     buttonText?: string
 }
 
-const cards: TCards[] = [
+export const szn1Cards: TCards[] = [
     {
         "id": 1,
         "name": "Claim Test Tokens",
@@ -176,5 +178,52 @@ const cards: TCards[] = [
     //     ]
     // }
 ]
-
-export default cards 
+export const szn2Cards = [
+    {
+        "id": 1,
+        "name": "Claim Test Tokens",
+        "class": "card_Metis",
+        "icon": metis,
+        "state": ItemStates.NOT_STARTED,
+        "cardsModalIcon": modalMetis,
+        "descriptionText": "Connect your wallet and claim your test tokens, clicking on \"Start Now\" will open a Telegram conversation with the bot that distributes the tokens. It is sufficient to click on \"start\" button and then bot will send you the tokens ",
+        "url": TG_BOT,
+        // "videoUrl": "",
+        buttonText: "Claim",
+        "history": [
+            {
+                "stageName": "Claim tokens from telegram bot (500 pts)",
+                "id": "joinId",
+                "state": ItemStates.NOT_STARTED
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Enki",
+        "class": "card_Enki",
+        "icon": enki,
+        "state": ItemStates.NOT_STARTED,
+        "cardsModalIcon": modalEnki,
+        "descriptionText": "Connect to Enki and complete the milestones below",
+        "url": "https://testnet.enkixyz.com/",
+        // "videoUrl": "https://www.youtube.com/embed/QfJkUClIN7E?si=5aNTrOtGMYyixrhF",
+        "history": [
+            {
+                "stageName": "Stake Metis into eMetis(eMetisMinter) (1500 pts)",
+                "id": "enkiStakeMetis",
+                "state": ItemStates.NOT_STARTED
+            },
+            {
+                "stageName": "Stake eMetis into seMetis vault(seMetis) (1500 pts)",
+                "id": "enkiStakeEMetis",
+                "state": ItemStates.NOT_STARTED
+            },
+            {
+                "stageName": "Stake ENKI to vest eMetis rewards from seMetis vault(vesting) (1500 pts)",
+                "id": "enkiStakeEnki",
+                "state": ItemStates.NOT_STARTED
+            }
+        ]
+    }
+]
