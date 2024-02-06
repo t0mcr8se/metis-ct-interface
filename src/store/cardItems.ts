@@ -211,17 +211,17 @@ export const szn2Cards = [
         "history": [
             {
                 "stageName": "Stake Metis into eMetis(eMetisMinter) (1500 pts)",
-                "id": "enkiMetisStake",
+                "id": "enkiStakeMetis",
                 "state": ItemStates.NOT_STARTED
             },
             {
                 "stageName": "Stake eMetis into seMetis vault(seMetis) (1500 pts)",
-                "id": "enkiEMetisStake",
+                "id": "enkiStakeEMetis",
                 "state": ItemStates.NOT_STARTED
             },
             {
                 "stageName": "Stake ENKI to vest eMetis rewards from seMetis vault(vesting) (1500 pts)",
-                "id": "enkiStake",
+                "id": "enkiStakeEnki",
                 "state": ItemStates.NOT_STARTED
             }
         ]
