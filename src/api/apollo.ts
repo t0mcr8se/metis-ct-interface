@@ -25,6 +25,12 @@ export const USER_QUERY = gql`
           leagueBuy
           hummusLp
           hummusSwap
+          spins
+          spinsBought
+          adminPointsAdded
+          enkiStakeEnki
+          enkiStakeMetis
+          enkiStakeEMetis
         }
       }
 `
