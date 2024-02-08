@@ -28,7 +28,7 @@ export function useXPAmount(address?: string) {
     pollInterval: 1000 * 30,
   });
 
-  const score = useMemo(() => resp.data?.user.score, [resp]);
+  const score = useMemo(() => resp.data?.user?.score, [resp]);
 
   return { score, ...resp };
 }

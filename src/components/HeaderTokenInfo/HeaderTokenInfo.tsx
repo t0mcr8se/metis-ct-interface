@@ -15,7 +15,7 @@ const HeaderTokenInfo: FC<IHeaderTokenInfo> = ({ icon, type, address }) => {
     <>
       <div className={`${styles.wallet_item} ${styles[type]}`}>
         <img src={icon} className={styles.token_info_icon} alt="" />
-        <div className={styles.wallet_content}>{score} </div>
+        <div className={styles.wallet_content}>{score ?? 0} </div>
       </div>
     </>
   );
