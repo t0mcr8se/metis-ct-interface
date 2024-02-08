@@ -12,14 +12,15 @@
   "dependencies": {
     "@apollo/client": "^3.8.9",
     "@vercel/analytics": "^1.1.1",
-    "@web3modal/wagmi": "3.5.5",
+    "@web3modal/wagmi": "^3.5.7",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
+    "react-confetti-explosion": "^2.1.2",
     "react-dom": "^18.2.0",
     "react-twitter-widgets": "^1.11.0",
     "styled-components": "^6.1.8",
-    "viem": "1.21.4",
-    "wagmi": "1.4.13-cjs"
+    "viem": "^1.21.4",
+    "wagmi": "^1.4.13"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

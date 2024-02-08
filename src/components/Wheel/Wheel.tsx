@@ -1,27 +1,30 @@
-import { useState, useRef, useMemo, useEffect } from 'react';
-import './wheel.css';
-import Arrow from './arrow.svg';
-import Ellipse from './Ellipse.svg';
-import {
-  customStyle,
-  getWheelVars,
-} from '../../utils/helper';
-import { arrowStyles, leftEllipseStyles, rightEllipseStyles } from './styles';
-import { useSpinWheel } from '../../hooks/useSpinningContract';
-import TxModal, { TxModalType } from '../TxModal/TxModal';
-import { formatEther } from 'viem';
+import { useState, useRef, useMemo, useEffect } from "react";
+import "./wheel.css";
+import Arrow from "./arrow.svg";
+import Ellipse from "./Ellipse.svg";
+import { customStyle, getWheelVars } from "../../utils/helper";
+import { arrowStyles, leftEllipseStyles, rightEllipseStyles } from "./styles";
+import { useSpinWheel } from "../../hooks/useSpinningContract";
+import TxModal, { TxModalType } from "../TxModal/TxModal";
+import { formatEther } from "viem";
+import { useXPAmount } from "../../hooks/useUser";
+import { useAccount } from "wagmi";
+import ConfettiExplosion from "react-confetti-explosion";
 
+export function Wheel({ items }: { items: string[] }) {
+  const [isExploding, setIsExploding] = useState(false);
 
-export function Wheel ({ items }: {items: string[]}) {
   const boxRef = useRef(null);
-  const [isSpun, setIsSpun] = useState(false)
-  const [spinningDuration, setSpinningDuration] = useState(1000)
-  const [numSpins, setNumSpins] = useState(5000)
+  const [isSpun, setIsSpun] = useState(false);
+  const [spinningDuration, setSpinningDuration] = useState(1000);
+  const [numSpins, setNumSpins] = useState(5000);
 
-  const [modalType, setModalType] = useState(TxModalType.FAIL)
-  const [content, setContent] = useState("")
-  const [openedModal, setOpenedModal] = useState(false)
+  const [modalType, setModalType] = useState(TxModalType.FAIL);
+  const [content, setContent] = useState("");
+  const [openedModal, setOpenedModal] = useState(false);
 
+  const { address } = useAccount();
+  const { refetch } = useXPAmount(address);
   const {
     spinWheel,
     isLoading,
@@ -38,79 +41,138 @@ export function Wheel ({ items }: {items: string[]}) {
     data: txHash,
     isFetchSuccess,
     tokensAdded,
-    pointsAdded
-  } = useSpinWheel()
+    pointsAdded,
+  } = useSpinWheel();
 
   const selectItem = () => {
-    if(isFetchLoading || isRefetching || isLoading)
-      return
+    if (isFetchLoading || isRefetching || isLoading) return;
 
-    if(isSpun) 
-      return setIsSpun(false)
-    
-    setSpinningDuration(1000)
-    setNumSpins(5000)
-    setIsSpun(true)
-    spinWheel()
+    if (isSpun) return setIsSpun(false);
+
+    setSpinningDuration(1000);
+    setNumSpins(5000);
+    setIsSpun(true);
+    spinWheel();
   };
 
   const wheelVars = useMemo(() => {
-    return getWheelVars(items.length, selectedItem, spinningDuration, numSpins)
-  }, [selectedItem, items.length, numSpins, spinningDuration])
+    return getWheelVars(items.length, selectedItem, spinningDuration, numSpins);
+  }, [selectedItem, items.length, numSpins, spinningDuration]);
 
   useEffect(() => {
-    if(isSpun && isError && isIdle && isFetchIdle && !isLoading && !isFetchLoading && !isRefetching) {
-      setIsSpun(false)
-      setNumSpins(0)
-      setSpinningDuration(1)
+    if (
+      isSpun &&
+      isError &&
+      isIdle &&
+      isFetchIdle &&
+      !isLoading &&
+      !isFetchLoading &&
+      !isRefetching
+    ) {
+      setIsSpun(false);
+      setNumSpins(0);
+      setSpinningDuration(1);
     }
-    if(!isLoading && !isFetchLoading && !isRefetching && isSpun){
-      setNumSpins(0)
-      setSpinningDuration(1)
+    if (!isLoading && !isFetchLoading && !isRefetching && isSpun) {
+      setNumSpins(0);
+      setSpinningDuration(1);
     }
-  }, [isSpun, isLoading, isFetchLoading, isRefetching, isError, isIdle, isFetchIdle])
+  }, [
+    isSpun,
+    isLoading,
+    isFetchLoading,
+    isRefetching,
+    isError,
+    isIdle,
+    isFetchIdle,
+  ]);
 
   const spinning = useMemo(() => {
-    return isSpun || isLoading || isFetchLoading || isRefetching ? 'spinning' : '';
-  }, [isSpun, isLoading, isFetchLoading, isRefetching])
+    return isSpun || isLoading || isFetchLoading || isRefetching
+      ? "spinning"
+      : "";
+  }, [isSpun, isLoading, isFetchLoading, isRefetching]);
 
   useEffect(() => {
-    if(isError) {
-      setContent(`transaction failed with error: ${error}`)
-      setModalType(TxModalType.FAIL)
-      setOpenedModal(true)
-      return
+    if (isError) {
+      setContent(`transaction failed with error: ${error}`);
+      setModalType(TxModalType.FAIL);
+      setOpenedModal(true);
+      return;
     }
-    if(isSuccess && isFetchError) {
-      setContent(`Could not fetch transaction, but the transaction was recoreded with txHash ${txHash?.hash}, your tokens/points will be added shortly, better refresh: ${fetchingError}`)
-      setModalType(TxModalType.SUCCESS)
-      setOpenedModal(true)
+    if (isSuccess && isFetchError) {
+      setContent(
+        `Could not fetch transaction, but the transaction was recoreded with txHash ${txHash?.hash}, your tokens/points will be added shortly, better refresh: ${fetchingError}`
+      );
+      setModalType(TxModalType.SUCCESS);
+      setOpenedModal(true);
     }
-    if(isSuccess && isFetchSuccess) {
-      setModalType(TxModalType.SUCCESS)
-      setOpenedModal(true)
-      if(tokensAdded && tokensAdded > 0n){
-        setContent(`You have won ${formatEther(tokensAdded)} METIS`)
+    if (isSuccess && isFetchSuccess) {
+      setIsExploding(true);
+      setModalType(TxModalType.SUCCESS);
+      setOpenedModal(true);
+      if (tokensAdded && tokensAdded > 0n) {
+        setContent(`You have won ${formatEther(tokensAdded)} METIS`);
       }
-      if(pointsAdded && pointsAdded > 0n) {
-        setContent(`You have won ${pointsAdded} XP points`)
+      if (pointsAdded && pointsAdded > 0n) {
+        // refetch
+        refetch()
+          .then(() => {
+            setContent(`You have won ${pointsAdded} XP points`);
+          })
+          .catch((err) => {
+            console.debug(`Error while refetching score: ${err}`);
+          });
       }
     }
-  }, [isError, error, isSuccess, setModalType, setContent, isFetchSuccess, txHash, pointsAdded, tokensAdded, isFetchError, fetchingError])
+  }, [
+    isError,
+    error,
+    isSuccess,
+    setModalType,
+    setContent,
+    isFetchSuccess,
+    txHash,
+    pointsAdded,
+    tokensAdded,
+    isFetchError,
+    fetchingError,
+    refetch,
+  ]);
 
   const openModal = () => {
-    setOpenedModal(true)
-  }
+    setOpenedModal(true);
+  };
   const closeModal = () => {
-    setOpenedModal(false)
-    document.body.style.overflow = 'auto'
-  }
+    setOpenedModal(false);
+    document.body.style.overflow = "auto";
+  };
 
   return (
     <>
       <img src={Arrow} style={arrowStyles} alt="" />
-      <div className="wheel-container" ref={boxRef}>
-        <div className={`wheel ${spinning}`} style={wheelVars} onClick={selectItem}>
+
+      <div
+        style={{ position: "relative" }}
+        className="wheel-container"
+        ref={boxRef}
+      >
+        {isExploding && (
+          <ConfettiExplosion
+            force={0.6}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+        )}
+        <div
+          className={`wheel ${spinning}`}
+          style={wheelVars}
+          onClick={selectItem}
+        >
           {items.map((item: string, index) => (
             <div className="wheel-item" key={index} style={customStyle(index)}>
               {item}
