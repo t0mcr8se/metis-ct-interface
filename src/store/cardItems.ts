@@ -193,6 +193,11 @@ export const szn2Cards = [
     buttonText: "Claim",
     history: [
       {
+        stageName: "Join telegram bot (500 pts)",
+        id: "joinId",
+        state: ItemStates.NOT_STARTED,
+      },
+      {
         stageName: "Claim tokens from telegram bot (500 pts)",
         id: "faucetClaim",
         state: ItemStates.NOT_STARTED,

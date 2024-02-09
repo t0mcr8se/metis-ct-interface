@@ -12,7 +12,7 @@ export function useUser(address?: string) {
   const { canClaim } = useClaimTokens(address, METIS_ADDRESS);
 
   return useMemo(
-    () => ({ ...resp.data?.user, faucetClaim: canClaim }),
+    () => ({ ...resp.data?.user, faucetClaim: !canClaim }),
     [canClaim, resp.data?.user]
   );
 }
