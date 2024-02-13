@@ -44,7 +44,7 @@ export type TCards = {
 export const szn1Cards: TCards[] = [
   {
     id: 1,
-    name: "Claim Test Tokens",
+    name: "Claim Daily Test Tokens",
     class: "card_Metis",
     icon: metis,
     state: ItemStates.NOT_STARTED,
@@ -181,7 +181,7 @@ export const szn1Cards: TCards[] = [
 export const szn2Cards = [
   {
     id: 1,
-    name: "Claim Test Tokens",
+    name: "Claim Daily Test Tokens",
     class: "card_Metis",
     icon: metis,
     state: ItemStates.NOT_STARTED,
