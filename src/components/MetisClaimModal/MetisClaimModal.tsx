@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import metisLogo from "../../assets/images/logo_mob.svg";
 import xpIcon from "../../assets/header_icons/xp_icon.svg";
 
