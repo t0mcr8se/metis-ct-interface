@@ -25,6 +25,9 @@
     letter-spacing: 0em;
     text-align: center;
 }
+.info_text >p >b >a {
+    color: aqua;
+}
 
 @media screen and (max-width: 800px) {
     .empty_space {
