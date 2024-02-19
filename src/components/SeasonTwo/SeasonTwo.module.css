@@ -9,6 +9,48 @@
     margin-bottom: 80px;
 }
 
+.season_two_card {
+    width: Fixed (900px);
+    height: Hug (156px);
+    top: 254px;
+    left: 270px;
+    padding: 20px, 30px, 40px, 30px;
+    border-radius: 20px;
+    gap: 5px;
+
+    border-radius: 20px;
+    padding: 20px, 30px, 40px, 30px;
+    background: linear-gradient(94.15deg, #003A92 100%, #002256 100%);
+    box-shadow: 0px 0px 50px 0px #0094FF80 inset;
+}
+
+.season_two_primary {
+    font-family: Raleway;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 42px;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.season_two_sub {
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.season_two_subsub {
+    font-family: Raleway;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
 .info_text {
     font-family: Inter;
     font-size: 18px;

@@ -9,7 +9,9 @@ function BigButtonPrimary() {
         <>
             <a className={`${styles.big_btn} ${styles.big_btn_primary}`} href="#szn2">
                 <div className={styles.big_btn_name}>
-                    <span>SEASON TWO</span>
+                    <p>SEASON TWO</p>
+                    <span>Thank you to all Metis community testers! Season 2 of community testing has ended.</span>
+                    <p>Your participation is invaluable! More details will come on how to earn more points</p>
                     <img src={arrow_right_white} alt="" />
                 </div>
                 <div>

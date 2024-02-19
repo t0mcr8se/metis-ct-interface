@@ -1,4 +1,4 @@
-import BigButtonPrimary from '../BigButtonPrimary/BigButtonPrimary.tsx'
+// import BigButtonPrimary from '../BigButtonPrimary/BigButtonPrimary.tsx'
 import TitleOne from '../TitleOne/TitleOne.tsx'
 import styles from './SeasonOne.module.css'
 
@@ -12,6 +12,9 @@ function SeasonOne() {
                         <TitleOne text='Season One' titleType='white' />
                         <div className={styles.info_text}>
                             <p>
+                            Season one of community testing has ended. Thank you for taking part! We hope you enjoyed the journey.
+                            </p>
+                            {/* <p>
                                 Season one of community testing has ended.
                             </p>
                             <p>
@@ -19,14 +22,12 @@ function SeasonOne() {
                             </p>
                             <p>
                                 Good luck with season 2 
-                            </p>
+                            </p> */}
                         </div>
                     </div>
-                    <div className='mb-10 sm:mb-14 md:mb-20'></div>
-                    <center></center>
-                    
-                    <div className='mb-10 sm:mb-14 md:mb-20'></div>
-                    <BigButtonPrimary />
+                    {/* <div className='mb-10 sm:mb-14 md:mb-20'></div>
+                    <div className='mb-10 sm:mb-14 md:mb-20'></div> */}
+                    {/* <BigButtonPrimary /> */}
                 </div>
             </div>
         </>
