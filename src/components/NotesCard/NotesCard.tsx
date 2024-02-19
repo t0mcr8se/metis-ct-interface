@@ -24,7 +24,10 @@ function NotesCard() {
                                 3)- The score might be unavailable or inaccurate during the next couple of days due to reindexing and calculating the final scores of players.
                             </p>
                             <p>
-                                4)- Once the scores are finalized, you will be able to claim an NFT on mainnet that makes you eligible for a gift
+                                4)- Once the scores are finalized, you will be able to claim<sup>*</sup> an NFT on mainnet that makes you eligible for a gift
+                            </p>
+                            <p>
+                                *- You will be able to claim an NFT if no botting or sybil activity was detected on your account
                             </p>
                         </div>
                     </div>
