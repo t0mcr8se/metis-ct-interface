@@ -12,11 +12,13 @@ function NotesCard() {
                         <TitleOne text='Notes' titleType='white' />
                         <div className={styles.info_text}>
                             <p>
-                                1)- Any Season 1 or Season 2 activities done after Sunday 23:59 EST won't be added to the final score
+                                1)- Any Season 1 or Season 2 activities done after Sunday 18th Februray 2024 23:59 EST won't be added to the final score
 
                             </p>
                             <p>
+                                <b>
                                 2)- You can increase your chances by taking part in mainnet activities on <a href="https://layer3.xyz/collections/introduction-to-metis" target="_blank">Layer3.xyz</a> 
+                                </b>
                             </p>
                             <p>
                                 3)- The score might be unavailable or inacurate during the next couple of days due to reindexing and calculating the final scores of players.
