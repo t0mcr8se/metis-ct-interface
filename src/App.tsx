@@ -6,6 +6,10 @@ import { WC_PROJECT_ID } from "./constants/index.ts";
 import { scoresClient } from "./api/apollo.ts";
 import { ApolloProvider } from "@apollo/client";
 import { Analytics } from "@vercel/analytics/react";
+import Scoreboard from "./pages/Scoreboard/index.tsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Header from "./components/Header/Header.tsx";
+import Footer from "./components/Footer/Footer.tsx";
 
 createWeb3Modal({
   wagmiConfig: config,
@@ -17,11 +21,24 @@ createWeb3Modal({
   },
 });
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/scoreboard",
+    element: <Scoreboard />,
+  },
+]);
+
 function App() {
   return (
     <WagmiConfig config={config}>
       <ApolloProvider client={scoresClient}>
-        <Home />
+        <Header />
+        <RouterProvider router={router} />
+        <Footer />
         <Analytics />
       </ApolloProvider>
     </WagmiConfig>
