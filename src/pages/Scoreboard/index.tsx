@@ -5,7 +5,7 @@ import { ScrollRestoration } from "react-router-dom";
 export default function Scoreboard() {
   const [selectedCategory, setCategory] = useState("1")
 
-  const handleCategoryChange = (event) => {
+  const handleCategoryChange = (event: any) => {
     setCategory(event.target.value);
   };
 
