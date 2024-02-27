@@ -1,19 +1,20 @@
+import { useFetchScoreboardPage } from "../../hooks/useHelmetDrop";
 import { shortenAddress } from "../../utils";
 import React, { useMemo } from "react";
 
 function Row({
-  rank,
-  score,
+  ranking,
+  points,
   address,
 }: {
-  rank: number;
-  score: number;
+  ranking: number;
+  points: number;
   address: string;
 }) {
   return (
     <div className="grid grid-cols-3 gap-x-4 w-full py-2 px-4 [&:nth-child(odd)]:bg-[#001C22] [&:nth-child(even)]:bg-[#001317]">
       <div className="font-inter font-normal text-md text-[#C1C1C1]">
-        {rank}
+        {ranking}
       </div>
       <div className="font-inter font-normal text-md text-[#C1C1C1]">
         <a
@@ -24,28 +25,16 @@ function Row({
         </a>
       </div>
       <div className="font-inter font-normal text-md text-right text-[#C1C1C1]">
-        {score}
+        {points}
       </div>
     </div>
   );
 }
 
-export default function ScoreboardTable({
-  scoreboard,
-}: {
-  scoreboard: Parameters<typeof Row>[0][];
-}) {
+export default function ScoreboardTable() {
   const [page, setPage] = React.useState(0);
+  const { scoreboard } = useFetchScoreboardPage(page);
 
-  const currentPage = useMemo(
-    () => scoreboard.slice(100 * page, 100 * page + 100),
-    [page, scoreboard]
-  );
-
-  const isLastPage = useMemo(
-    () => (page >= Math.ceil(scoreboard.length / 100) - 1 ? true : false),
-    [page, scoreboard.length]
-  );
   const isFirstPage = useMemo(() => page === 0, [page]);
 
   return (
@@ -69,7 +58,6 @@ export default function ScoreboardTable({
         <button
           onClick={() => setPage((p) => p + 1)}
           className="flex items-center justify-center w-8 h-8 rounded-full bg-[#007B96] hover:bg-[#2c6572] hover:text-white disabled:pointer-events-none disabled:opacity-40"
-          disabled={isLastPage}
         >
           <svg
             width="7"
@@ -95,14 +83,24 @@ export default function ScoreboardTable({
           </div>
         </div>
 
-        {currentPage.map(({ rank, score, address }) => (
-          <Row
-            key={`scoreboard-${address}-${rank}`}
-            rank={rank}
-            score={score}
-            address={address}
-          />
-        ))}
+        {scoreboard.map(
+          ({
+            ranking,
+            points,
+            address,
+          }: {
+            ranking: number;
+            points: number;
+            address: string;
+          }) => (
+            <Row
+              key={`scoreboard-${address}-${ranking}`}
+              ranking={ranking}
+              points={points}
+              address={address}
+            />
+          )
+        )}
       </div>
       <div className="w-full mt-4 flex items-center justify-end gap-2">
         <button
@@ -123,7 +121,6 @@ export default function ScoreboardTable({
         <button
           onClick={() => setPage((p) => p + 1)}
           className="flex items-center justify-center w-8 h-8 rounded-full bg-[#007B96] hover:bg-[#2c6572] hover:text-white disabled:pointer-events-none disabled:opacity-40"
-          disabled={isLastPage}
         >
           <svg
             width="7"

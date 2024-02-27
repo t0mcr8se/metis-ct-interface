@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.9",
+    "@openzeppelin/merkle-tree": "^1.0.6",
     "@vercel/analytics": "^1.1.1",
     "@web3modal/wagmi": "^3.5.7",
+    "axios": "^1.6.7",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-confetti-explosion": "^2.1.2",

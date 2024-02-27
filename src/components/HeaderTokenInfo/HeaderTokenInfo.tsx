@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./HeaderTokenInfo.module.css";
-import { useXPAmount } from "../../hooks/useUser";
+import { useMerkleProof } from "../../hooks/useHelmetDrop";
 
 interface IHeaderTokenInfo {
   icon: string;
@@ -9,13 +9,14 @@ interface IHeaderTokenInfo {
 }
 
 const HeaderTokenInfo: FC<IHeaderTokenInfo> = ({ icon, type, address }) => {
-  const { score } = useXPAmount(address);
+  const { points } = useMerkleProof(address)
+  console.log({points})
 
   return (
     <>
       <div className={`${styles.wallet_item} ${styles[type]}`}>
         <img src={icon} className={styles.token_info_icon} alt="" />
-        <div className={styles.wallet_content}>{score ?? 0} </div>
+        <div className={styles.wallet_content}>{points ?? 0} </div>
       </div>
     </>
   );

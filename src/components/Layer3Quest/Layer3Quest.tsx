@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Layer3Quest({ id }: { id: string }) {
   return (
     <a href={`https://layer3.xyz/quests/${id}`} target="_blank">

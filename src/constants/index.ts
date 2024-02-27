@@ -18,3 +18,9 @@ export const GITHUB_URL = "https://github.com/MetisProtocol";
 export const DISCORD_URL = "https://discord.com/invite/metis";
 export const MEDIUM_URL = "https://metisl2.medium.com/";
 export const METIS_URL = "https://metis.io/";
+
+// Helmet drop constants
+export const HELMET_DROP_ADDRESS = "0xF29eA76d01cCfA2f8772519a3813078d267b080D"
+// TODO: update this to a folder (s3/ipfs) that has the json for each address
+export const HELMET_PROOF_URL = "https://metis-merkle-verifier.azurewebsites.net/api/getUserMerkleProof?address="
+export const HELMET_SCOREBOARD_URL = "https://metis-merkle-verifier.azurewebsites.net/api/getPaginatedUsers?limit=100&page="

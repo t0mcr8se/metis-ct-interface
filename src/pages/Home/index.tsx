@@ -3,6 +3,7 @@ import SeasonTwo from "../../components/SeasonTwo/SeasonTwo.tsx";
 // import Ecosystem from '../../components/Ecosystem/Ecosystem.tsx'
 
 import "./Home.css";
+import "../../styles.css";
 import Layer3Quest from "../../components/Layer3Quest/Layer3Quest.tsx";
 import ButtonSmall from "../../components/ButtonSmall/ButtonSmall.tsx";
 import { Link, ScrollRestoration } from "react-router-dom";
@@ -10,8 +11,29 @@ import { Link, ScrollRestoration } from "react-router-dom";
 import NFT_IMAGE_1 from "../../assets/cards/nft1.png";
 import NFT_IMAGE_2 from "../../assets/cards/nft2.png";
 import NFT_IMAGE_3 from "../../assets/cards/nft3.png";
+import { useCallback, useMemo } from "react";
+import { useClaimHelmet } from "../../hooks/useHelmetDrop.ts";
+import { useAccount, useNetwork } from "wagmi";
+import { metis } from "viem/chains";
 
 export default function Home() {
+  const { address } = useAccount();
+  const { chain } = useNetwork();
+
+  const { found, claim, hasClaimed, helmetType, ranking, loading } =
+    useClaimHelmet(address);
+
+  const helmetTypeNum = useMemo(() => Number(helmetType ?? 0), [helmetType]);
+
+  const handleClick = useCallback(() => {
+    if (!found) {
+      return;
+    }
+    if (found) {
+      claim();
+    }
+  }, [claim, found]);
+
   return (
     <>
       <ScrollRestoration />
@@ -21,7 +43,11 @@ export default function Home() {
         <div className="w-full mt-16 mb-12">
           <div className="w-full grid grid-cols-3 gap-4 mb-12 sm:grid-cols-3">
             <div
-              className={`w-full pb-[100%] rounded-xl border border-solid border-[#00D2FF] shadow-[0px_0px_25px_0px_rgba(0,210,255,0.25)] relative overflow-hidden`}
+              className={`w-full pb-[100%] rounded-xl border border-solid border-[#00D2FF] shadow-[0px_0px_25px_0px_rgba(${
+                Number(helmetType ?? 0) === 1
+                  ? "170,255,0,0.5"
+                  : "0,210,255,0.25"
+              })] relative overflow-hidden`}
             >
               <img
                 src={NFT_IMAGE_1}
@@ -29,7 +55,11 @@ export default function Home() {
               />
             </div>
             <div
-              className={`w-full pb-[100%] rounded-xl border border-solid border-[#00D2FF] shadow-[0px_0px_25px_0px_rgba(0,210,255,0.25)] relative overflow-hidden`}
+              className={`w-full pb-[100%] rounded-xl border border-solid border-[#00D2FF] shadow-[0px_0px_25px_0px_rgba(${
+                Number(helmetType ?? 0) === 2
+                  ? "170,255,0,0.5"
+                  : "0,210,255,0.25"
+              })] relative overflow-hidden`}
             >
               <img
                 src={NFT_IMAGE_2}
@@ -37,7 +67,11 @@ export default function Home() {
               />
             </div>
             <div
-              className={`w-full pb-[100%] rounded-xl border border-solid border-[#00D2FF] shadow-[0px_0px_25px_0px_rgba(0,210,255,0.25)] relative overflow-hidden`}
+              className={`w-full pb-[100%] rounded-xl border border-solid border-[#00D2FF] shadow-[0px_0px_25px_0px_rgba(${
+                Number(helmetType ?? 0) === 3
+                  ? "170,255,0,0.5"
+                  : "0,210,255,0.25"
+              })] relative overflow-hidden`}
             >
               <img
                 src={NFT_IMAGE_3}
@@ -45,7 +79,58 @@ export default function Home() {
               />
             </div>
           </div>
-          <ButtonSmall type="unstyled_btn" text={"Claim Now"} />
+
+          <br />
+          {!chain ? (
+            <center>
+              <h1 className="text-white text-center font-raleway font-bold text-3xl leading-none tracking-wide max-w-xl">
+                Please connect to Metis network
+              </h1>
+              <br />
+              <w3m-connect-button />
+            </center>
+          ) : chain.id !== metis.id ? (
+            <center>
+              <h1 className="text-white text-center font-raleway font-bold text-3xl leading-none tracking-wide max-w-xl">
+                Please switch the network
+              </h1>
+              <br />
+              <w3m-network-button />
+            </center>
+          ) : (
+            <>
+              {!loading && !found && (
+                <h1 className="text-white text-center font-raleway font-bold text-3xl leading-none tracking-wide max-w-xl">
+                  Your address was not found in the tree
+                </h1>
+              )}
+              {!loading && found && (
+                <h1 className="text-white text-center font-raleway font-bold text-3xl leading-none tracking-wide max-w-xl">
+                  You have earned the{" "}
+                  {helmetTypeNum === 1
+                    ? "ELITE"
+                    : helmetTypeNum === 2
+                    ? "BASED"
+                    : "GOOD"}{" "}
+                  helmet
+                </h1>
+              )}
+              <br />
+              {!loading && found && (
+                <h1 className="text-white text-center font-raleway font-bold text-3xl leading-none tracking-wide max-w-xl">
+                  Your ranking among other players: {Number(ranking)}
+                </h1>
+              )}
+              <br />
+              {!hasClaimed && found && (
+                <ButtonSmall
+                  type="unstyled_btn"
+                  text={"Claim Now"}
+                  onClick={handleClick}
+                />
+              )}
+            </>
+          )}
         </div>
       </div>
       <div className="w-full bg-[#1F252C] py-[66px] flex flex-col items-center">
