@@ -21,6 +21,7 @@ export const METIS_URL = "https://metis.io/";
 
 // Helmet drop constants
 export const HELMET_DROP_ADDRESS = "0xF29eA76d01cCfA2f8772519a3813078d267b080D"
+export const HELMET_EXPLORER_URI = "https://andromeda-explorer.metis.io/token/0xf29ea76d01ccfa2f8772519a3813078d267b080d/instance/"
 // TODO: update this to a folder (s3/ipfs) that has the json for each address
 export const HELMET_PROOF_URL = "https://metis-merkle-verifier.azurewebsites.net/api/getUserMerkleProof?address="
 export const HELMET_SCOREBOARD_URL = "https://metis-merkle-verifier.azurewebsites.net/api/getPaginatedUsers?limit=100&page="

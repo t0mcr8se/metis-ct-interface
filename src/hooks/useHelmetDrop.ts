@@ -62,11 +62,10 @@ export function useClaimHelmet(address?: string) {
     args: [address],
     enabled: Boolean(address),
   });
-  const hasClaimed = useMemo(
-    () => hasClaimedData,
+  const hasClaimed: boolean = useMemo(
+    () => hasClaimedData && (hasClaimedData as any),
     [hasClaimedData]
   );
-  console.log({hasClaimed})
   const {points, helmetType, joinId, ranking, proof, found, loading} = useMerkleProof(address)
 
   const {
@@ -79,7 +78,6 @@ export function useClaimHelmet(address?: string) {
     functionName: "claim",
     gas: 200000n,
   });
-  console.log({helmetType, proof, points, ranking, joinId})
 
   const claim: () => void = useCallback(() => {
     claimCall({ args: [proof, helmetType, points, ranking, joinId] });

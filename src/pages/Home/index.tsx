@@ -15,12 +15,13 @@ import { useCallback, useMemo } from "react";
 import { useClaimHelmet } from "../../hooks/useHelmetDrop.ts";
 import { useAccount, useNetwork } from "wagmi";
 import { metis } from "viem/chains";
+import { HELMET_EXPLORER_URI } from "../../constants/index.ts";
 
 export default function Home() {
   const { address } = useAccount();
   const { chain } = useNetwork();
 
-  const { found, claim, hasClaimed, helmetType, ranking, loading } =
+  const { found, claim, hasClaimed, helmetType, ranking, loading, joinId } =
     useClaimHelmet(address);
 
   const helmetTypeNum = useMemo(() => Number(helmetType ?? 0), [helmetType]);
@@ -122,6 +123,13 @@ export default function Home() {
                 </h1>
               )}
               <br />
+              {!loading && found && hasClaimed && (
+                <ButtonSmall
+                  type="unstyled_btn"
+                  text={"Check your Helmet"}
+                  onClick={() => {window.open(HELMET_EXPLORER_URI + joinId)}}
+                />
+              )}
               {!hasClaimed && found && (
                 <ButtonSmall
                   type="unstyled_btn"
