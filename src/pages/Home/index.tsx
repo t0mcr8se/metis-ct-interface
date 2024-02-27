@@ -8,9 +8,9 @@ import Layer3Quest from "../../components/Layer3Quest/Layer3Quest.tsx";
 import ButtonSmall from "../../components/ButtonSmall/ButtonSmall.tsx";
 import { Link, ScrollRestoration } from "react-router-dom";
 
-import NFT_IMAGE_1 from "../../assets/cards/nft1.png";
-import NFT_IMAGE_2 from "../../assets/cards/nft2.png";
-import NFT_IMAGE_3 from "../../assets/cards/nft3.png";
+import NFT_IMAGE_1 from "../../assets/cards/1.png";
+import NFT_IMAGE_2 from "../../assets/cards/2.png";
+import NFT_IMAGE_3 from "../../assets/cards/3.png";
 import { useCallback, useMemo } from "react";
 import { useClaimHelmet } from "../../hooks/useHelmetDrop.ts";
 import { useAccount, useNetwork } from "wagmi";
