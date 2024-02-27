@@ -31,9 +31,10 @@ function Row({
   );
 }
 
-export default function ScoreboardTable() {
+export default function ScoreboardTable({category}: {category: string}) {
+  
   const [page, setPage] = React.useState(0);
-  const { scoreboard } = useFetchScoreboardPage(page);
+  const { scoreboard } = useFetchScoreboardPage(page, category);
 
   const isFirstPage = useMemo(() => page === 0, [page]);
 
@@ -85,11 +86,11 @@ export default function ScoreboardTable() {
 
         {scoreboard.map(
           ({
-            ranking,
+            helmetRanking: ranking,
             points,
             address,
           }: {
-            ranking: number;
+            helmetRanking: number;
             points: number;
             address: string;
           }) => (

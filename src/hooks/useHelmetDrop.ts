@@ -32,15 +32,15 @@ export function useMerkleProof(address?: string) {
     }, [data]); 
 }
 
-export function useFetchScoreboardPage(page:number = 0) {
+export function useFetchScoreboardPage(page:number = 0, category: string) {
     const [data, setData] = useState<undefined | any>(undefined)
     useEffect(() => {
       const fetchData = async (url: string) => {
         const result = await axios(url)
         setData(result)
       }
-      fetchData(HELMET_SCOREBOARD_URL+page)
-    }, [page])
+      fetchData(HELMET_SCOREBOARD_URL+page+`&?helmetType=${category}`)
+    }, [page, category])
     return useMemo(() => {
       if (!data) return { loading: true, scoreboard: [] };
       if (data.status !== 200) return {found: false, scoreboard: []}
