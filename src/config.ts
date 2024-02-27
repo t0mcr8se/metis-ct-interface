@@ -1,6 +1,7 @@
 import { Chain } from "wagmi";
 import { defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { WC_PROJECT_ID } from "./constants";
+import { metis } from "viem/chains";
 
 // Metis sepolia chain config
 export const metis_sepolia = {
@@ -27,7 +28,7 @@ export const metis_sepolia = {
 
 export const config = defaultWagmiConfig({
   projectId: WC_PROJECT_ID,
-  chains: [metis_sepolia],
+  chains: [metis],
   metadata: {
     // TODO: update Metadata
     name: "Metis Community Testing",
